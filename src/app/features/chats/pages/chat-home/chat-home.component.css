@@ -1,0 +1,478 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(#009688 0%, #009688 130px, #d9dbd5 130px, #d9dbd5 100%);
+}
+
+main
+{
+    position: relative;
+    display: flex;
+    width: 1400px;
+    max-width: 100%;
+    height: calc(100vh - 40px);
+    background: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.6), 0 2px 5px 0 rgba(0, 0, 0, 0.6);
+}
+
+.usuario
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lista
+{
+    position: relative;
+    flex: 30%;
+    background: #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu
+{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0 15px;
+    background: #ededed;
+}
+
+.avatarusuario
+{
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.opcoes
+{
+    display: flex;
+}
+
+.opcoes li
+{
+    cursor: pointer;
+    display: flex;
+    list-style: none;
+    color: #7e868a;
+    font-size: 1.5em;
+    margin-left: 22px;
+}
+
+.anexo
+{
+    transform: rotate(45deg);
+}
+
+.notificacoes
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 25px 15px;
+    background: #81e3ff;
+    color: #81e3ff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);    
+}
+
+.icone_notificacao
+{
+    position: relative;
+    min-width: 45px;
+    height: 45px;
+    margin-right: 18px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.icone_notificacao ion-icon
+{
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    font-size: 1.3em;    
+}
+
+.detalhes_notificacao
+{
+    position: relative;
+    width: 100%;
+}
+
+.aviso_notificacao
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.aviso_notificacao p
+{
+    color: #000;
+}
+
+.ativar_notificacoes
+{
+    display: flex;
+    align-items: center;
+}
+
+.ativar_notificacoes a
+{
+    cursor: pointer;
+    color: #000;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ativar_notificacoes a:hover
+{
+    text-decoration: underline;
+}
+
+.ativar_notificacoes a:active
+{
+    text-decoration: none;
+}
+
+.busca
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    background: #f6f6f6;
+}
+
+.campobusca
+{
+    width: 100%;
+}
+
+.campobusca input
+{
+    width: 100%;
+    height: 38px;
+    padding: 6px;
+    padding-left: 50px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.campobusca input::placeholder
+{
+    color: #bbb;
+}
+
+.campobusca ion-icon
+{
+    position: absolute;
+    left: 30px;
+    top: 14px;
+    font-size: 1.2em;
+    color: #bfc4c7;
+}
+
+.listadeconversas
+{
+    position: relative;
+    height: calc(100% - 110px);
+    overflow-y: auto;
+}
+
+.janeladeconversa
+{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);    
+}
+
+.janeladeconversa:hover
+{
+    background: #f5f5f5;
+}
+
+.ativa
+{
+    background: #ebebeb;
+}
+
+.avatarconversa
+{
+    position: relative;
+    min-width: 45px;
+    height: 45px;
+    margin-right: 10px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.detalhes
+{
+    position: relative;
+    width: 100%;
+}
+
+.detalhes_nome
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.detalhes_nome h4
+{
+    font-size: 1.1em;
+    font-weight: 450;
+    color: #111;
+}
+
+.naolida .horario
+{
+    color: #06d755;
+}
+
+.naolida .detalhes_nome h4
+{
+    font-weight: 600;
+}
+
+.naolida .mensagem
+{
+    justify-content: space-between;
+}
+
+.naolida .mensagem p
+{
+    font-weight: 600;
+}
+
+.horario
+{
+    font-size: 0.75em;
+    color: #aaa;
+}
+
+.mensagem
+{
+    display: flex;
+    align-items: center;
+}
+
+.mensagem p
+{
+    color: #aaa;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mensagem b
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.75em;
+    background: #06d755;
+    color: #fff;    
+}
+
+.mensagem ion-icon
+{
+    margin-right: 2px;
+    color: #6ed1f4;
+}
+
+.conversa
+{
+    position: relative;
+    flex: 70%;
+    background: #e5ddd5;
+}
+
+.conversa::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.06;
+}
+
+.avatar
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar h4
+{
+    margin-left: 15px;
+    font-weight: 600;
+    line-height: 1.2em;
+}
+
+.avatar h4 span
+{
+    font-size: 0.8em;
+    color: #555;
+}
+
+.corpo_conversa
+{
+    position: relative;
+    width: 100%;
+    height: calc(100% - 120px);
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.mensagem_usuario
+{
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.mensagem_usuario p
+{
+    position: relative;
+    right: 0;
+    max-width: 65%;
+    padding: 12px;
+    background: #dcf8c6;
+    border-radius: 10px;
+    text-align: right;
+    font-size: 0.9em;
+}
+
+.mensagem_usuario p::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #dcf8c6 0%, #dcf8c6 50%, transparent 50%,transparent);
+}
+
+.mensagem_usuario p span
+{
+    padding-left: 6px;
+    margin-top: 5px;
+    font-size: 0.65em;
+    opacity: 0.5;
+}
+
+.proprio
+{
+    justify-content: flex-end;
+}
+
+.proprio ion-icon
+{
+    color: #6ed1f4;
+}
+
+.outrem
+{
+    justify-content: flex-start;
+}
+
+.outrem p
+{
+    background: #fff;
+    text-align: left;
+}
+
+.outrem p::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(225deg, #fff 0%, #fff 50%, transparent 50%,transparent);
+}
+
+.input_conversa
+{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 15px;
+    background: #f0f0f0;
+}
+
+.input_conversa ion-icon
+{
+    cursor: pointer;
+    font-size: 1.8em;
+    color: #7e868a;
+}
+
+.input_conversa input
+{
+    position: relative;
+    width: 90%;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 1em;
+}
