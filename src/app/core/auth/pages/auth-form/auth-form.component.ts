@@ -1,13 +1,13 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthFormService } from './auth-service';
 import { authFormTemplateModel, DataModel } from './auth-form.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { getAuthFormTemplate } from './auth-form-template';
 
 @Component({
   selector: 'app-auth-form',
-  imports: [],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.css'
 })
