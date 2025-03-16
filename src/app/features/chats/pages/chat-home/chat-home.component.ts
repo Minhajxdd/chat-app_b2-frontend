@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
+import { ChatSocketService } from '../../services/chat-socket.service';
+import { ChatRightBoxComponent } from "./chat-right-box/chat-right-box.component";
 
 @Component({
   selector: 'app-chat-home',
-  imports: [],
+  imports: [ChatRightBoxComponent],
   templateUrl: './chat-home.component.html',
-  styleUrl: './chat-home.component.css'
+  styleUrl: './chat-home.component.css',
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ChatHomeComponent {
-  arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19, 20, 21, 22,23,24]
+  private readonly _chatSocketService = inject(ChatSocketService);
+
+  constructor() {
+    this._chatSocketService.connect();
+
+    this._chatSocketService.emit('enter-chats', {});
+  }
 }

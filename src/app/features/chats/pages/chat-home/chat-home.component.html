@@ -15,31 +15,22 @@
           <i class="bx bx-dots-vertical-rounded"></i>
 
           <div class="relative hidden">
-
-            <div class="top-[30px] right-[-12px] absolute w-[100px] h-[100px] bg-gray-300 z-10"
-            style="padding: 10px 0px;">
-
-              <ul >
+            <div
+              class="top-[30px] right-[-12px] absolute w-[100px] h-[100px] bg-gray-300 z-10"
+              style="padding: 10px 0px"
+            >
+              <ul>
                 <li class="flex align-center justify-center hover:bg-gray-400">
                   <span class="text-black text-[20px]">Profile</span>
                 </li>
               </ul>
-
             </div>
-
           </div>
-
         </li>
       </ul>
     </header>
 
-
-
-
     <section class="listadeconversas">
-
-      @for (val of arr; track val) {
-
       <div class="janeladeconversa hover:bg-gray-100">
         <div class="avatarconversa">
           <img
@@ -49,12 +40,12 @@
         </div>
         <div class="detalhes">
           <aside class="detalhes_nome">
-            <h4>Sabrina Matos</h4>
+            <h4>Siyad </h4>
             <p class="horario">22:40</p>
           </aside>
           <aside class="mensagem flex items-center gap-1">
             <i class="bx bx-check-double text-[1.4rem]"></i>
-            <p>Oi, tudo bem?</p>
+            <p>Is There Socket.IO?</p>
           </aside>
         </div>
       </div>
@@ -67,15 +58,12 @@
           />
         </div>
         <div class="detalhes">
-
-
-
           <aside class="detalhes_nome">
-            <h4>João Augusto</h4>
+            <h4>Minhaj</h4>
             <p class="horario">12:30</p>
           </aside>
           <aside class="mensagem">
-            <p>Está disponível para um freela?</p>
+            <p>my name is mohammed minahj</p>
             <b>3</b>
           </aside>
         </div>
@@ -90,58 +78,19 @@
         </div>
         <div class="detalhes">
           <aside class="detalhes_nome">
-            <h4>Maria Silva</h4>
+            <h4>fjslkjfd</h4>
             <p class="horario">08:20</p>
           </aside>
           <aside class="mensagem">
-            <p>O projeto ficou perfeito, obrigada!</p>
+            <p>fdsafdafds!</p>
             <b>5</b>
           </aside>
         </div>
       </div>
-
-    }
     </section>
   </nav>
 
-  <nav class="conversa">
-    <header class="menu">
-      <div class="avatar">
-        <div class="avatarusuario">
-          <img src="https://media.istockphoto.com/id/1300972574/photo/millennial-male-team-leader-organize-virtual-workshop-with-employees-online.jpg?s=2048x2048&w=is&k=20&c=tU5X1sJJ9sIcqthiw5RO388RhKNllo0ZF82LPitfXgU=" class="usuario" />
-        </div>
-        <h4>Sabrina Matos<br /><span>Online</span></h4>
-      </div>
-      <ul class="opcoes">
-        <li><i class='bx bx-dots-vertical-rounded' ></i></li>
-      </ul>
-    </header>
 
-    <section class="corpo_conversa">
+  <div class="conversa" app-chat-right-box></div>
 
-
-      @for (val of arr; track val) {
-        <div class="mensagem_usuario outrem">
-          <p>Hi bro.<span>12:00</span></p>
-        </div>
-  
-        <div class="mensagem_usuario proprio">
-          <p>
-            Yhhh<span>22:40</span>
-          </p>
-        </div>
-            
-      }
-
-
-
-
-    </section>
-
-    <section class="input_conversa flex items-center justify-center">
-        <i class='bx bx-smile text-[2rem] cursor-pointer'></i>
-      <input type="text" placeholder="Type a message" />
-      <i class='bx bxs-send text-[2rem] cursor-pointer'></i>
-    </section>
-  </nav>
 </main>
