@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: '[app-chat-right-box]',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './chat-right-box.component.css'
 })
 export class ChatRightBoxComponent {
-
+  private readonly _activatedRoute = inject(ActivatedRoute);
+  chatId: string = '';
+  constructor() {
+    this._activatedRoute.queryParams.subscribe((data) => {
+      this.chatId = data['id'];
+    })
+  }
 }
