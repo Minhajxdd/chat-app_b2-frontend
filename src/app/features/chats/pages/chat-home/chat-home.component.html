@@ -33,7 +33,7 @@
     <section class="listadeconversas">
 
       @for (user of users; track user._id) {
-        <div class="janeladeconversa hover:bg-gray-200">
+        <div [routerLink]="['/chat']" [queryParams]="{ id: user._id}" class="janeladeconversa hover:bg-gray-200">
           <div class="avatarconversa">
             <img
               src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"

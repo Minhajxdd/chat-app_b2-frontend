@@ -3,10 +3,11 @@ import { ChatSocketService } from '../../services/chat-socket.service';
 import { ChatRightBoxComponent } from "./chat-right-box/chat-right-box.component";
 import { ChatHomeService } from './chat-home.service';
 import { Users } from './chat-home.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-chat-home',
-  imports: [ChatRightBoxComponent],
+  imports: [ChatRightBoxComponent, RouterLink],
   templateUrl: './chat-home.component.html',
   styleUrl: './chat-home.component.css',
   encapsulation: ViewEncapsulation.ShadowDom
