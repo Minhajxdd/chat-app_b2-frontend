@@ -37,6 +37,9 @@
 
 
     <section class="listadeconversas">
+
+      @for (val of arr; track val) {
+
       <div class="janeladeconversa hover:bg-gray-100">
         <div class="avatarconversa">
           <img
@@ -64,6 +67,9 @@
           />
         </div>
         <div class="detalhes">
+
+
+
           <aside class="detalhes_nome">
             <h4>João Augusto</h4>
             <p class="horario">12:30</p>
@@ -93,6 +99,8 @@
           </aside>
         </div>
       </div>
+
+    }
     </section>
   </nav>
 
@@ -110,33 +118,24 @@
     </header>
 
     <section class="corpo_conversa">
-      <div class="mensagem_usuario outrem">
-        <p>Hi bro.<span>12:00</span></p>
-      </div>
 
-      <div class="mensagem_usuario proprio">
-        <p>
-          Yhhh<span>22:40</span>
-        </p>
-      </div>
 
-      <div class="mensagem_usuario proprio">
-        <p>
-          Yhhh<span>22:40</span>
-        </p>
-      </div>
+      @for (val of arr; track val) {
+        <div class="mensagem_usuario outrem">
+          <p>Hi bro.<span>12:00</span></p>
+        </div>
+  
+        <div class="mensagem_usuario proprio">
+          <p>
+            Yhhh<span>22:40</span>
+          </p>
+        </div>
+            
+      }
 
-      <div class="mensagem_usuario proprio">
-        <p>
-          h<span>22:40</span>
-        </p>
-      </div>
 
-      <div class="mensagem_usuario proprio">
-        <p>
-          Yhhh<span>22:40</span>
-        </p>
-      </div>
+
+
     </section>
 
     <section class="input_conversa flex items-center justify-center">
