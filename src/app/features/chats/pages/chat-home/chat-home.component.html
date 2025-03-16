@@ -31,24 +31,31 @@
     </header>
 
     <section class="listadeconversas">
-      <div class="janeladeconversa hover:bg-gray-100">
-        <div class="avatarconversa">
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
-            class="usuario"
-          />
+
+      @for (user of users; track user._id) {
+        <div class="janeladeconversa hover:bg-gray-200">
+          <div class="avatarconversa">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
+              class="usuario"
+            />
+          </div>
+          <div class="detalhes">
+            <aside class="detalhes_nome">
+              <h4>
+              {{ user.fullName }}
+              </h4>
+              <p class="horario">22:40</p>
+            </aside>
+            <aside class="mensagem flex items-center gap-1">
+              <i class="bx bx-check-double text-[1.4rem]"></i>
+              <p>Is There Socket.IO?</p>
+            </aside>
+          </div>
         </div>
-        <div class="detalhes">
-          <aside class="detalhes_nome">
-            <h4>Siyad </h4>
-            <p class="horario">22:40</p>
-          </aside>
-          <aside class="mensagem flex items-center gap-1">
-            <i class="bx bx-check-double text-[1.4rem]"></i>
-            <p>Is There Socket.IO?</p>
-          </aside>
-        </div>
-      </div>
+
+      }
+
 
       <div class="janeladeconversa naolida">
         <div class="avatarconversa">
@@ -87,6 +94,8 @@
           </aside>
         </div>
       </div>
+
+
     </section>
   </nav>
 
