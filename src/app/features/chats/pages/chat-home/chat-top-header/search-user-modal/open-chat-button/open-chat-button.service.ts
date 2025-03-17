@@ -19,4 +19,16 @@ export class OpenChatButtonService {
       }
     );
   }
+
+  requestConversation(otherUserId: string) {
+    return this._http.post(
+      `${environment.back_end}/chat/request-conversation`,
+      {
+        otherUserId,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }

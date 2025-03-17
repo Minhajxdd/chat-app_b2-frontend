@@ -14,11 +14,16 @@ import { SearchUserService } from './search-user.service';
 import { FormsModule } from '@angular/forms';
 import { User } from './search-user.types';
 import { AutocompleteUserBoxesComponent } from './autocomplete-user-boxes/autocomplete-user-boxes.component';
-import { OpenChatButtonComponent } from "./open-chat-button/open-chat-button.component";
+import { OpenChatButtonComponent } from './open-chat-button/open-chat-button.component';
 
 @Component({
   selector: 'app-search-user-modal',
-  imports: [PortalModule, FormsModule, AutocompleteUserBoxesComponent, OpenChatButtonComponent],
+  imports: [
+    PortalModule,
+    FormsModule,
+    AutocompleteUserBoxesComponent,
+    OpenChatButtonComponent,
+  ],
   templateUrl: './search-user-modal.component.html',
   styleUrl: './search-user-modal.component.css',
 })
@@ -27,18 +32,14 @@ export class SearchUserModalComponent implements OnChanges {
   private readonly _destoryRef = inject(DestroyRef);
 
   constructor(private overlay: Overlay) {
-    setTimeout(() => {
-      this.openModal();
-    }, 100);
-
     this.getSearchedData();
   }
 
-  ngOnChanges(): void {
-    if (this.showModal() === false) {
-      this.detachModal();
-    } else {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['showModal']?.currentValue) {
       this.openModal();
+    } else {
+      this.detachModal();
     }
   }
 
@@ -104,7 +105,7 @@ export class SearchUserModalComponent implements OnChanges {
 
     this.overlayRef = this.overlay.create(config);
     this.overlayRef.attach(this.portal);
-    this.overlayRef.backdropClick().subscribe(() => this.closeModal());
+    this.overlayRef.backdropClick().subscribe(() => this.detachModal());
   }
 
   closeModal() {
@@ -112,6 +113,9 @@ export class SearchUserModalComponent implements OnChanges {
   }
 
   detachModal() {
-    this.overlayRef?.detach();
+    if (this.overlayRef && this.overlayRef.hasAttached()) {
+      this.overlayRef.detach();
+      this.closeModal();
+    }
   }
 }

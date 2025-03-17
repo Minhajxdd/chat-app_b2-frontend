@@ -51,7 +51,7 @@
           Search...
         </button>
         } @else {
-        <app-open-chat-button [userId]="selectedUser?._id || ''"></app-open-chat-button>
+        <app-open-chat-button (onCloseModal)="detachModal()" [userId]="selectedUser?._id || ''"></app-open-chat-button>
         }
       </div>
     </div>
