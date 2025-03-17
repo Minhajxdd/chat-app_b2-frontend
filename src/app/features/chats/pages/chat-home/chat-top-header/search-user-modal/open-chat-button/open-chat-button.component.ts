@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { OpenChatButtonService } from './open-chat-button.service';
 
 @Component({
   selector: 'app-open-chat-button',
@@ -7,10 +8,25 @@ import { Component, input } from '@angular/core';
   styleUrl: './open-chat-button.component.css'
 })
 export class OpenChatButtonComponent {
+  private readonly _openChatButtonService = inject(OpenChatButtonService);
+  
+
   userId = input.required<string>()
 
   checkConversationStatus() {
-    console.log(this.userId())
+
+    const subscription = this._openChatButtonService.checkForConversation(this.userId())
+    .subscribe({
+      next: (data) => {
+        console.log('data from open chat button');
+        console.log(data);
+      },
+      error: (err) => {
+        console.log('error from open chat button');
+        console.log(err);
+      }
+    })
+
   }
 
 }

@@ -59,6 +59,7 @@ export class SearchUserModalComponent implements OnChanges {
   onClearInput() {
     this.usersDatas = [];
     this.searchKeyword = '';
+    this.isUserSelected = false;
   }
 
   getSearchedData() {
