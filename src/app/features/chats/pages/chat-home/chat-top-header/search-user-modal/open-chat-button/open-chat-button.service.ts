@@ -9,7 +9,7 @@ export class OpenChatButtonService {
   private readonly _http = inject(HttpClient);
 
   checkForConversation(otherUserId: string) {
-    return this._http.post(
+    return this._http.post<{ data: any[] }>(
       `${environment.back_end}/chat/find-conversation`,
       {
         otherUserId,
