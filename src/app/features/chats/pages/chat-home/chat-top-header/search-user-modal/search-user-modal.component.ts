@@ -1,5 +1,6 @@
 import {
   Component,
+  inject,
   input,
   OnChanges,
   output,
@@ -8,16 +9,18 @@ import {
 } from '@angular/core';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { SearchUserService } from './search-user.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-user-modal',
-  imports: [PortalModule],
+  imports: [PortalModule, FormsModule],
   templateUrl: './search-user-modal.component.html',
   styleUrl: './search-user-modal.component.css',
 })
 export class SearchUserModalComponent implements OnChanges {
-  showModal = input.required();
-  onCloseModal = output();
+  private readonly _searchUserService = inject(SearchUserService);
+
 
   constructor(private overlay: Overlay) {
     setTimeout(() => {
@@ -26,15 +29,30 @@ export class SearchUserModalComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    
     if(this.showModal() === false) {
       this.detachModal();
     } else {
       this.openModal()
     }
-
   }
 
+  // related to search
+  searchKeyword: string = '';
+  
+  searchWithKeyword() {
+    console.log(this.searchKeyword);
+    this._searchUserService.searchUser(this.searchKeyword);
+  }
+
+  onClearInput() {
+    this.searchKeyword = '';
+  }
+
+
+  // related to modal and stuff
+  showModal = input.required();
+  onCloseModal = output();
+  
   @ViewChild(CdkPortal) portal!: CdkPortal;
 
   overlayRef!: OverlayRef;
