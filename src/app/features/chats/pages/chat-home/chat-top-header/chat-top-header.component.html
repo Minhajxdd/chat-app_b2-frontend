@@ -6,7 +6,9 @@
   </div>
   <ul class="opcoes items-center justify-center gap-3">
     <li>
-      <i class="bx bx-search-alt-2"></i>
+      <i class="bx bx-search-alt-2"
+      (click)="onToggleSearchModal()"
+      ></i>
     </li>
 
     <li>
@@ -27,6 +29,6 @@
         </div>
       </div>
     </li>
-    <app-search-user-modal></app-search-user-modal>
+    <app-search-user-modal (onCloseModal)="onToggleSearchModal()" [showModal]="showSearchModal()"></app-search-user-modal>
   </ul>
 

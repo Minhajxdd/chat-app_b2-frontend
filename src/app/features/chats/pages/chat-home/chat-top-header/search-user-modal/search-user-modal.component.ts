@@ -1,4 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import {
+  Component,
+  input,
+  OnChanges,
+  output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 
@@ -8,12 +15,20 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
   templateUrl: './search-user-modal.component.html',
   styleUrl: './search-user-modal.component.css',
 })
-export class SearchUserModalComponent {
-  constructor(private overlay: Overlay) {
-    setTimeout(() => {
-      
-      this.openModal();
-    }, 1000);
+export class SearchUserModalComponent implements OnChanges {
+  showModal = input.required();
+  onCloseModal = output();
+
+  constructor(private overlay: Overlay) {}
+
+  ngOnChanges(): void {
+    
+    if(this.showModal() === false) {
+      this.detachModal();
+    } else {
+      this.openModal()
+    }
+
   }
 
   @ViewChild(CdkPortal) portal!: CdkPortal;
@@ -33,10 +48,15 @@ export class SearchUserModalComponent {
 
     this.overlayRef = this.overlay.create(config);
     this.overlayRef.attach(this.portal);
-    this.overlayRef.backdropClick().subscribe(() => this.overlayRef.detach());
+    this.overlayRef.backdropClick().subscribe(() => this.closeModal());
   }
 
   closeModal() {
-    this.overlayRef.detach();
+    this.onCloseModal.emit();
+    
+  }
+
+  detachModal() {
+    this.overlayRef?.detach();
   }
 }

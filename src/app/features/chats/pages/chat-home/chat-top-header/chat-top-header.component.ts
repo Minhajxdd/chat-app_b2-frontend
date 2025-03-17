@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { SearchUserModalComponent } from "./search-user-modal/search-user-modal.component";
 
 @Component({
@@ -8,5 +8,10 @@ import { SearchUserModalComponent } from "./search-user-modal/search-user-modal.
   styleUrl: './chat-top-header.component.css'
 })
 export class ChatTopHeaderComponent {
+  showSearchModal = signal(false);
+
+  onToggleSearchModal() {
+    this.showSearchModal.set(!this.showSearchModal());
+  }
 
 }
