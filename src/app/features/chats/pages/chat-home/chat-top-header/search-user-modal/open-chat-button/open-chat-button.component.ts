@@ -11,6 +11,7 @@ export class OpenChatButtonComponent {
   private readonly _openChatButtonService = inject(OpenChatButtonService);
 
   isLoading = signal(false);
+  requestConversatoin = signal(false);
 
   userId = input.required<string>();
 
@@ -21,8 +22,16 @@ export class OpenChatButtonComponent {
       .checkForConversation(this.userId())
       .subscribe({
         next: (data) => {
+          console.log(`ths is the converstaion status response`);
+          console.log(data);
+
           if (!data.data.length) {
+            this.requestConversatoin.set(true);
+
+          } else {
+            // Implement redirect to conversation feature
           }
+
 
           console.log(data);
         },

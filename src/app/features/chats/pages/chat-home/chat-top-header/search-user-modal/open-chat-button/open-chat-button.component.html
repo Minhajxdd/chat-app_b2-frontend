@@ -14,7 +14,12 @@
           <span class="sr-only">Loading...</span>
         </div>
 
-    } @else {
+    } 
+    @else if (requestConversatoin()) {
+      <i class='bx bx-send mr-1'></i>
+      Sent Request
+    }
+    @else {
       <i class="bx bxs-message-rounded-dots mr-1"></i>
       Open Chat
     }
