@@ -12,6 +12,7 @@ export class ChatRightBoxComponent {
   chatId: string = '';
   constructor() {
     this._activatedRoute.queryParams.subscribe((data) => {
+      console.log(data['id'], ' This is chat Id');
       this.chatId = data['id'];
     })
   }
