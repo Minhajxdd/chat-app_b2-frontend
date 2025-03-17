@@ -34,6 +34,7 @@
           @for (user of usersDatas; track user._id) {
 
           <app-autocomplete-user-boxes
+          (onClick)="onUserClicked($event)"
             [user]="user"
           ></app-autocomplete-user-boxes>
           }
@@ -45,8 +46,14 @@
         <button
           class="bg-white text-blue-500 hover:bg-gray-100 font-medium py-2 px-6 rounded-lg shadow transition duration-150 flex items-center justify-center w-full"
         >
-          <i class="bx bx-send mr-2"></i>
-          Send Request
+        
+        @if (!isUserSelected) {
+          <i class='bx bx-search-alt-2 mr-1' ></i>
+          Search...
+        } @else {
+          <app-open-chat-button></app-open-chat-button>
+          }
+
         </button>
       </div>
     </div>
