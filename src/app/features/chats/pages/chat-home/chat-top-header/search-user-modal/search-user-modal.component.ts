@@ -19,7 +19,11 @@ export class SearchUserModalComponent implements OnChanges {
   showModal = input.required();
   onCloseModal = output();
 
-  constructor(private overlay: Overlay) {}
+  constructor(private overlay: Overlay) {
+    setTimeout(() => {
+      this.openModal();
+    }, 100)
+  }
 
   ngOnChanges(): void {
     
@@ -42,7 +46,7 @@ export class SearchUserModalComponent implements OnChanges {
         .global()
         .centerHorizontally()
         .centerVertically(),
-      width: '60%',
+      width: '30%',
       hasBackdrop: true,
     });
 
