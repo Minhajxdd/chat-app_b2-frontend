@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-open-chat-button',
@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './open-chat-button.component.css'
 })
 export class OpenChatButtonComponent {
+  userId = input.required<string>()
 
   checkConversationStatus() {
-    console.log('this is conversation status');
+    console.log(this.userId())
   }
 
 }
