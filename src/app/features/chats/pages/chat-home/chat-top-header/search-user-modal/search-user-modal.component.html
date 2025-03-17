@@ -21,8 +21,8 @@
           />
 
           <button
-          (click)="onClearInput()"
-          class="bg-gray-100 hover:bg-gray-200 p-3 text-gray-600 focus:outline-none transition duration-150"
+            (click)="onClearInput()"
+            class="bg-gray-100 hover:bg-gray-200 p-3 text-gray-600 focus:outline-none transition duration-150"
           >
             <i class="bx bx-x"></i>
           </button>
@@ -31,33 +31,12 @@
         <div
           class="absolute left-0 right-0 mt-1 bg-white rounded-lg shadow-lg overflow-hidden z-10"
         >
-          <div
-            class="hidden px-3 py-3 hover:bg-gray-100 flex items-center cursor-pointer border-b border-gray-100"
-          >
-            <div
-              class="bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center mr-3"
-            >
-              <i class="bx bxs-user text-gray-500"></i>
-            </div>
-            <div class="flex-1">
-              <p class="text-gray-800 font-medium">John Doe</p>
-              <p class="text-gray-500 text-sm">john.doeexample.com</p>
-            </div>
-          </div>
+          @for (user of usersDatas; track user._id) {
 
-          <div
-            class="hidden px-3 py-3 hover:bg-gray-100 flex items-center cursor-pointer"
-          >
-            <div
-              class="bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center mr-3"
-            >
-              <i class="bx bxs-user text-gray-500"></i>
-            </div>
-            <div class="flex-1">
-              <p class="text-gray-800 font-medium">Jane Smith</p>
-              <p class="text-gray-500 text-sm">jane.smithexample.com</p>
-            </div>
-          </div>
+          <app-autocomplete-user-boxes
+            [user]="user"
+          ></app-autocomplete-user-boxes>
+          }
         </div>
       </div>
 

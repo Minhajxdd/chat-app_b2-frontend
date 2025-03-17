@@ -13,10 +13,11 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { SearchUserService } from './search-user.service';
 import { FormsModule } from '@angular/forms';
 import { User } from './search-user.types';
+import { AutocompleteUserBoxesComponent } from "./autocomplete-user-boxes/autocomplete-user-boxes.component";
 
 @Component({
   selector: 'app-search-user-modal',
-  imports: [PortalModule, FormsModule],
+  imports: [PortalModule, FormsModule, AutocompleteUserBoxesComponent],
   templateUrl: './search-user-modal.component.html',
   styleUrl: './search-user-modal.component.css',
 })
