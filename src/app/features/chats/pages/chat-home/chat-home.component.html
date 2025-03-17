@@ -1,44 +1,9 @@
 <main style="width: 100%; height: 100vh">
   <nav class="lista">
-    <header class="menu">
-      <div class="avatarusuario">
-        <img
-          src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
-          class="usuario"
-        />
-        
-      </div>
-      <ul class="opcoes items-center justify-center gap-3">
-        <li>
-          <i class='bx bx-search-alt-2' ></i>
-        </li>
+  
+    <header class="menu" app-chat-top-header></header>
 
-        <li>
-          <i class="bx bx-dots-vertical-rounded"></i>
-
-          <!-- Toggle Div -->
-          <div class="relative hidden">
-            <div
-              class="top-[30px] right-[-12px] absolute w-[100px] h-[100px] bg-gray-300 z-10"
-              style="padding: 10px 0px"
-            >
-              <ul style="display: flex;">
-                <li>
-                  <i class='bx bx-search-alt-2'></i>
-                </li>
-                <li>
-                  fd
-                </li>
-
-              </ul>
-            </div>
-          </div>
-
-
-        </li>
-      </ul>
-    </header>
-
+    
     <section class="listadeconversas">
 
       @for (user of users; track user._id) {

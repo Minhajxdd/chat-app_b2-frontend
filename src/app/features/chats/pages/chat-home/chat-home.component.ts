@@ -4,10 +4,11 @@ import { ChatRightBoxComponent } from "./chat-right-box/chat-right-box.component
 import { ChatHomeService } from './chat-home.service';
 import { Users } from './chat-home.model';
 import { RouterLink } from '@angular/router';
+import { ChatTopHeaderComponent } from './chat-top-header/chat-top-header.component';
 
 @Component({
   selector: 'app-chat-home',
-  imports: [ChatRightBoxComponent, RouterLink],
+  imports: [ChatRightBoxComponent, RouterLink, ChatTopHeaderComponent],
   templateUrl: './chat-home.component.html',
   styleUrl: './chat-home.component.css',
 })
