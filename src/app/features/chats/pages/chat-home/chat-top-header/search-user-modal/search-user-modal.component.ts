@@ -9,7 +9,12 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
   styleUrl: './search-user-modal.component.css',
 })
 export class SearchUserModalComponent {
-  constructor(private overlay: Overlay) {}
+  constructor(private overlay: Overlay) {
+    setTimeout(() => {
+      
+      this.openModal();
+    }, 1000);
+  }
 
   @ViewChild(CdkPortal) portal!: CdkPortal;
 
