@@ -10,7 +10,6 @@ import { RouterLink } from '@angular/router';
   imports: [ChatRightBoxComponent, RouterLink],
   templateUrl: './chat-home.component.html',
   styleUrl: './chat-home.component.css',
-  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ChatHomeComponent {
   private readonly _chatSocketService = inject(ChatSocketService);
