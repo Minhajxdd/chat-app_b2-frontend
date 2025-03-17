@@ -34,7 +34,7 @@
           @for (user of usersDatas; track user._id) {
 
           <app-autocomplete-user-boxes
-          (onClick)="onUserClicked($event)"
+            (onClick)="onUserClicked($event)"
             [user]="user"
           ></app-autocomplete-user-boxes>
           }
@@ -43,18 +43,16 @@
 
       <!-- Send Button -->
       <div class="mt-4">
+        @if (!isUserSelected) {
         <button
           class="bg-white text-blue-500 hover:bg-gray-100 font-medium py-2 px-6 rounded-lg shadow transition duration-150 flex items-center justify-center w-full"
         >
-        
-        @if (!isUserSelected) {
-          <i class='bx bx-search-alt-2 mr-1' ></i>
+          <i class="bx bx-search-alt-2 mr-1"></i>
           Search...
-        } @else {
-          <app-open-chat-button></app-open-chat-button>
-          }
-
         </button>
+        } @else {
+        <app-open-chat-button></app-open-chat-button>
+        }
       </div>
     </div>
   </div>

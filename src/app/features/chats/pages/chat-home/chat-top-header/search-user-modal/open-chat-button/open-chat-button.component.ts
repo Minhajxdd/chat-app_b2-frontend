@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class OpenChatButtonComponent {
 
+  checkConversationStatus() {
+    console.log('this is conversation status');
+  }
+
 }
