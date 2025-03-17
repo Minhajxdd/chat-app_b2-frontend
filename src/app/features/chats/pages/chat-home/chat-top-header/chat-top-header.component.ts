@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { SearchUserModalComponent } from './search-user-modal/search-user-modal.component';
 import { NgClass } from '@angular/common';
+import { ThreedotDropdownComponent } from "./threedot-dropdown/threedot-dropdown.component";
 
 @Component({
   selector: '[app-chat-top-header]',
-  imports: [SearchUserModalComponent, NgClass],
+  imports: [SearchUserModalComponent, NgClass, ThreedotDropdownComponent],
   templateUrl: './chat-top-header.component.html',
   styleUrl: './chat-top-header.component.css',
 })
