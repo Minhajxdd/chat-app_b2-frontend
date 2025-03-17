@@ -1,34 +1,35 @@
-  <div class="avatarusuario">
-    <img
-      src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
-      class="usuario"
-    />
-  </div>
-  <ul class="opcoes items-center justify-center gap-3">
-    <li>
-      <i class="bx bx-search-alt-2"
-      (click)="onToggleSearchModal()"
-      ></i>
-    </li>
+<div class="avatarusuario">
+  <img
+    src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
+    class="usuario"
+  />
+</div>
+<ul class="opcoes items-center justify-center gap-3">
+  <li>
+    <i class="bx bx-search-alt-2" (click)="onToggleSearchModal()"></i>
+  </li>
 
-    <li>
-      <i class="bx bx-dots-vertical-rounded"></i>
+  <li>
+    <i (click)="onToggleThreeDot()" class="bx bx-dots-vertical-rounded"></i>
 
-      <!-- Toggle Div -->
-      <div class="relative hidden">
-        <div
-          class="top-[30px] right-[-12px] absolute w-[100px] h-[100px] bg-gray-300 z-10"
-          style="padding: 10px 0px"
-        >
-          <ul style="display: flex">
-            <li>
-              <i class="bx bx-search-alt-2"></i>
-            </li>
-            <li>fd</li>
-          </ul>
+    
+    <div [ngClass]="{ hidden: !showThreeDot() }" class="relative">
+      <div class="absolute top-[30px] right-[-12px] z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div class="py-1" role="none">
+    
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+          <form method="POST" action="#" role="none">
+            <button type="submit" class="block w-full px-4 py-2 text-left text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+          </form>
         </div>
       </div>
-    </li>
-    <app-search-user-modal (onCloseModal)="onToggleSearchModal()" [showModal]="showSearchModal()"></app-search-user-modal>
-  </ul>
-
+    
+    </div>
+  </li>
+  <app-search-user-modal
+    (onCloseModal)="onToggleSearchModal()"
+    [showModal]="showSearchModal()"
+  ></app-search-user-modal>
+</ul>
