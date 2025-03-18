@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ChatSelectedConversationService } from '../../../services/chat-selected-conversation.service';
 import { Conversations } from '../chat-home.model';
 
@@ -10,7 +10,7 @@ import { Conversations } from '../chat-home.model';
 })
 export class ChatRightBoxComponent {
   isSelected = signal(false);
-  selectedConversation: Conversations | null = null;
+  selectedConversation!: Conversations;
 
   constructor(
     private readonly _chatSelectedConversationService: ChatSelectedConversationService
@@ -26,9 +26,6 @@ export class ChatRightBoxComponent {
           this.isSelected.set(true);
           this.selectedConversation = data;
         }
-
-        console.log(`This is the selected conversation`);
-        console.log(data);
       });
   }
 }

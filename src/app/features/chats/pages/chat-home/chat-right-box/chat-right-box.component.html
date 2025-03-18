@@ -1,42 +1,41 @@
 <header class="menu">
-
   @if(isSelected()) {
-    <div class="avatar">
-      <div class="avatarusuario">
-        <img
-          src="https://media.istockphoto.com/id/1300972574/photo/millennial-male-team-leader-organize-virtual-workshop-with-employees-online.jpg?s=2048x2048&w=is&k=20&c=tU5X1sJJ9sIcqthiw5RO388RhKNllo0ZF82LPitfXgU="
-          class="usuario"
-        />
-      </div>
-      <h4>Siyad<br /><span>Online</span></h4>
+  <div class="avatar">
+    <div class="avatarusuario">
+      <img
+        src="https://media.istockphoto.com/id/1300972574/photo/millennial-male-team-leader-organize-virtual-workshop-with-employees-online.jpg?s=2048x2048&w=is&k=20&c=tU5X1sJJ9sIcqthiw5RO388RhKNllo0ZF82LPitfXgU="
+        class="usuario"
+      />
     </div>
-    <ul class="opcoes">
-      <li><i class="bx bx-dots-vertical-rounded"></i></li>
-    </ul>
-  }
+    @if (selectedConversation.conversation[0].type === 'single') {
+    <h4>
+      {{ selectedConversation.users[0].fullName }} <br /><span>Online</span>
+    </h4>
 
+    }
+  </div>
+  <ul class="opcoes">
+    <li><i class="bx bx-dots-vertical-rounded"></i></li>
+  </ul>
+  }
 </header>
 
 <section class="corpo_conversa">
   @if (isSelected()) {
-    <div class="mensagem_usuario outrem">
-      <p>Hi bro.<span>12:00</span></p>
-    </div>
-  
-    <div class="mensagem_usuario proprio">
-      <p>Yhhh<span>22:40</span></p>
-    </div>
+  <div class="mensagem_usuario outrem">
+    <p>Hi bro.<span>12:00</span></p>
+  </div>
+
+  <div class="mensagem_usuario proprio">
+    <p>Yhhh<span>22:40</span></p>
+  </div>
   }
-
-
 </section>
 
 <section class="input_conversa flex items-center justify-center">
-
   @if (isSelected()) {
-    <i class="bx bx-smile text-[2rem] cursor-pointer"></i>
-    <input type="text" placeholder="Type a message" />
-    <i class="bx bxs-send text-[2rem] cursor-pointer"></i>
+  <i class="bx bx-smile text-[2rem] cursor-pointer"></i>
+  <input type="text" placeholder="Type a message" />
+  <i class="bx bxs-send text-[2rem] cursor-pointer"></i>
   }
-
 </section>
