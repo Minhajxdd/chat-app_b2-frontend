@@ -1,6 +1,13 @@
+export enum RequestActions {
+  ACCEPT = 'accept',
+  REJECT = 'reject',
+}
+
 export interface Conversation {
-  email: string;
-  fullName: string;
+  createdAt: string;
+  type: RequestActions;
+  updatedAt: string;
+  __v: number;
   _id: string;
 }
 
