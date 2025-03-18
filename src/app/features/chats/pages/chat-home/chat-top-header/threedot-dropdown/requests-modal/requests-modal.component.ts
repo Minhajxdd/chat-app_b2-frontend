@@ -1,21 +1,51 @@
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
-import { Component, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DestroyRef,
+  inject,
+  ViewChild,
+} from '@angular/core';
+import { RequestService } from './requests.service';
+import { Requests } from './requests.types';
 
 @Component({
   selector: 'app-requests-modal',
   imports: [PortalModule],
   templateUrl: './requests-modal.component.html',
-  styleUrl: './requests-modal.component.css'
+  styleUrl: './requests-modal.component.css',
 })
-export class RequestsModalComponent {
+export class RequestsModalComponent implements AfterViewInit {
+  requests: Requests[] = [];
 
-  constructor(private overlay: Overlay) {
+  constructor(
+    private overlay: Overlay,
+    private readonly _requestService: RequestService,
+    private readonly _destoryRef: DestroyRef
+  ) {
     setTimeout(() => {
       this.openModal();
-    },50);
+    }, 50);
   }
 
+  ngAfterViewInit(): void {
+    this.fetchRequests();
+  }
+
+  fetchRequests() {
+    const subscription = this._requestService.getRequests().subscribe({
+      next: (data) => {
+        this.requests = data.data;
+      },
+    });
+
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+  }
+
+  // related to modal
   @ViewChild(CdkPortal) portal!: CdkPortal;
 
   overlayRef!: OverlayRef;
@@ -27,7 +57,7 @@ export class RequestsModalComponent {
         .global()
         .centerHorizontally()
         .centerVertically(),
-      
+
       hasBackdrop: true,
     });
 
