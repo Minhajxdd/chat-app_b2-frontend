@@ -12,7 +12,10 @@ export class ChatSelectedConversationService {
     this.dataStore.asObservable();
 
   setConversation(data: Conversations): void {
-    this.dataStore.next(data);
+
+    if(data.conversation[0]._id !== this.getCurrentConversation()?.conversation[0]._id) {
+      this.dataStore.next(data);
+    }
   }
 
   getConversationObservable(): Observable<Conversations | null> {
