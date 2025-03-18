@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, ViewEncapsulation } from '@angular/core'
 import { ChatSocketService } from '../../services/chat-socket.service';
 import { ChatRightBoxComponent } from "./chat-right-box/chat-right-box.component";
 import { ChatHomeService } from './chat-home.service';
-import { Users } from './chat-home.model';
+import { Conversatoins } from './chat-home.model';
 import { RouterLink } from '@angular/router';
 import { ChatTopHeaderComponent } from './chat-top-header/chat-top-header.component';
 
@@ -17,7 +17,7 @@ export class ChatHomeComponent {
   private readonly _chatHomeService = inject(ChatHomeService);
   private readonly _destroyRef = inject(DestroyRef);
 
-  users: Users[] = [];
+  conversations: Conversatoins[] = [];
 
   constructor() {
     this._chatSocketService.connect();
@@ -27,7 +27,8 @@ export class ChatHomeComponent {
     const subscription = this._chatHomeService.getUsers()
     .subscribe({
       next: (data) => {
-        this.users = data.data;
+        console.log(data);
+        this.conversations = data.data;
       }
     });
 
