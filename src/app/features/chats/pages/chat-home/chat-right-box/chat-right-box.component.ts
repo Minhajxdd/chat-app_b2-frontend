@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, DestroyRef, signal } from '@angular/core';
 import { ChatSelectedConversationService } from '../../../services/chat-selected-conversation.service';
 import { Conversations } from '../chat-home.model';
 import { ChatInputBoxComponent } from "./chat-input-box/chat-input-box.component";
@@ -15,6 +15,7 @@ export class ChatRightBoxComponent {
 
   constructor(
     private readonly _chatSelectedConversationService: ChatSelectedConversationService,
+    private readonly _destoryRef: DestroyRef
     
   ) {
     this.subscribeToSelectedUsers();
@@ -29,5 +30,9 @@ export class ChatRightBoxComponent {
           this.selectedConversation = data;
         }
       });
+
+      this._destoryRef.onDestroy(() => {
+        subscription.unsubscribe()
+      })
   }
 }
