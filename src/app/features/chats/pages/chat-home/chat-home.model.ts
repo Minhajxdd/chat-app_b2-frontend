@@ -10,7 +10,7 @@ export interface Users {
   _id: string;
 }
 
-export interface Conversatoins {
+export interface Conversations {
   conversation: Conversation[];
   users: Users[];
   participantsLength: number;
