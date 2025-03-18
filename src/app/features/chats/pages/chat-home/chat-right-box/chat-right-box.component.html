@@ -7,12 +7,13 @@
         class="usuario"
       />
     </div>
+    
     @if (selectedConversation.conversation[0].type === 'single') {
     <h4>
       {{ selectedConversation.users[0].fullName }} <br /><span>Online</span>
     </h4>
-
     }
+
   </div>
   <ul class="opcoes">
     <li><i class="bx bx-dots-vertical-rounded"></i></li>
@@ -32,10 +33,9 @@
   }
 </section>
 
-<section class="input_conversa flex items-center justify-center">
-  @if (isSelected()) {
-  <i class="bx bx-smile text-[2rem] cursor-pointer"></i>
-  <input type="text" placeholder="Type a message" />
-  <i class="bx bxs-send text-[2rem] cursor-pointer"></i>
+@if (isSelected()) {
+  <section app-chat-input-box>
+
+  </section>
+
   }
-</section>
