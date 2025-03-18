@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../../../../../core/auth/service/auth.service';
 import { RequestsModalComponent } from "./requests-modal/requests-modal.component";
 
@@ -11,8 +11,14 @@ import { RequestsModalComponent } from "./requests-modal/requests-modal.componen
 export class ThreedotDropdownComponent {
   private readonly _authservice = inject(AuthService);
 
+  isRequestModalOpen = signal(false);
+
   logOut() {
     this._authservice.logout();
+  }
+
+  onToggleRequestModal() {
+    this.isRequestModalOpen.set(!this.isRequestModalOpen());
   }
 
 }

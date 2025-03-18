@@ -5,6 +5,10 @@ import {
   Component,
   DestroyRef,
   inject,
+  input,
+  OnChanges,
+  output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { RequestService } from './requests.service';
@@ -16,18 +20,23 @@ import { Requests } from './requests.types';
   templateUrl: './requests-modal.component.html',
   styleUrl: './requests-modal.component.css',
 })
-export class RequestsModalComponent implements AfterViewInit {
+export class RequestsModalComponent implements AfterViewInit, OnChanges {
+  isModalOpen = input.required<boolean>();
+  emitCloseModal = output();
+
   requests: Requests[] = [];
+
+  ngOnChanges(): void {
+    if (this.isModalOpen() === true) {
+      this.openModal();
+    }
+  }
 
   constructor(
     private overlay: Overlay,
     private readonly _requestService: RequestService,
     private readonly _destoryRef: DestroyRef
-  ) {
-    setTimeout(() => {
-      this.openModal();
-    }, 50);
-  }
+  ) {}
 
   ngAfterViewInit(): void {
     this.fetchRequests();
@@ -87,10 +96,11 @@ export class RequestsModalComponent implements AfterViewInit {
 
     this.overlayRef = this.overlay.create(config);
     this.overlayRef.attach(this.portal);
-    this.overlayRef.backdropClick().subscribe(() => this.overlayRef.detach());
+    this.overlayRef.backdropClick().subscribe(() => this.closeModal());
   }
 
   closeModal() {
     this.overlayRef.detach();
+    this.emitCloseModal.emit();
   }
 }
