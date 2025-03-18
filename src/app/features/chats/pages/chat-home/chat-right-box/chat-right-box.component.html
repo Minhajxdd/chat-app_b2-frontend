@@ -22,12 +22,9 @@
 </header>
 
 <section class="corpo_conversa">
-  @if (isSelected()) {
-    <div app-chat-body>
-
-
-    </div>
-  }
+  <div [isSelected]="isSelected()" app-chat-body>
+  
+</div>
 </section>
 
 @if (isSelected()) {

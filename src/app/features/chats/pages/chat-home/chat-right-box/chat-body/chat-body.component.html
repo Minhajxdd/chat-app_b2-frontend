@@ -1,5 +1,8 @@
 <div>
-    <div app-msg-receive-box> </div>
+    @if(isSelected()) {
+        <div app-msg-receive-box> </div>
+        <div app-msg-sent-box> </div>
+
+    }
     
-    <div app-msg-sent-box> </div>
 </div>

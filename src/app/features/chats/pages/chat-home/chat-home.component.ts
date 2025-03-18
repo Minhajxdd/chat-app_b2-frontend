@@ -30,7 +30,7 @@ export class ChatHomeComponent {
   constructor() {
     this._chatSocketService.connect();
 
-    // this._chatSocketService.emit('enter-chats', {});
+    this._chatSocketService.emit('enter-chats', {});
 
     this.getUsers();
   }
