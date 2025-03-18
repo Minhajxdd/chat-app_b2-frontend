@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { ChatSelectedConversationService } from '../../../services/chat-selected-conversation.service';
 import { Conversations } from '../chat-home.model';
-import { ChatSocketService } from '../../../services/chat-socket.service';
 import { ChatInputBoxComponent } from "./chat-input-box/chat-input-box.component";
 
 @Component({
@@ -16,7 +15,7 @@ export class ChatRightBoxComponent {
 
   constructor(
     private readonly _chatSelectedConversationService: ChatSelectedConversationService,
-    private readonly _chatSocketService: ChatSocketService
+    
   ) {
     this.subscribeToSelectedUsers();
   }
