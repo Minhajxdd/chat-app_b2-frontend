@@ -1,6 +1,5 @@
 <header class="menu">
 
-  @if(chatId) {
     <div class="avatar">
       <div class="avatarusuario">
         <img
@@ -13,12 +12,12 @@
     <ul class="opcoes">
       <li><i class="bx bx-dots-vertical-rounded"></i></li>
     </ul>
-  }
+  
 
 </header>
 
 <section class="corpo_conversa">
-  @if (chatId) {
+ 
     <div class="mensagem_usuario outrem">
       <p>Hi bro.<span>12:00</span></p>
     </div>
@@ -26,17 +25,14 @@
     <div class="mensagem_usuario proprio">
       <p>Yhhh<span>22:40</span></p>
     </div>
-  }
-
+ 
 
 </section>
 
 <section class="input_conversa flex items-center justify-center">
 
-  @if (chatId) {
     <i class="bx bx-smile text-[2rem] cursor-pointer"></i>
     <input type="text" placeholder="Type a message" />
     <i class="bx bxs-send text-[2rem] cursor-pointer"></i>
-  }
 
 </section>
