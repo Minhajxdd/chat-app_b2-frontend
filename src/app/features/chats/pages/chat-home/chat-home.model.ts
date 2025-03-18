@@ -1,11 +1,11 @@
-export enum RequestActions {
-  ACCEPT = 'accept',
-  REJECT = 'reject',
+export enum ConversationType {
+  SINGLE = 'single',
+  GROUP = 'group',
 }
 
 export interface Conversation {
   createdAt: string;
-  type: RequestActions;
+  type: ConversationType;
   updatedAt: string;
   __v: number;
   _id: string;
