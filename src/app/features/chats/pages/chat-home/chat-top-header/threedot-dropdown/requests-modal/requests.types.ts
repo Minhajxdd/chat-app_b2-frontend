@@ -16,3 +16,8 @@ export interface Requests {
   __v: number;
   _id: string;
 }
+
+export enum RequestActions {
+  ACCEPT = 'accept',
+  REJECT = 'reject',
+}

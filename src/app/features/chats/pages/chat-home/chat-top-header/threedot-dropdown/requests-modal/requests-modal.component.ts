@@ -45,6 +45,30 @@ export class RequestsModalComponent implements AfterViewInit {
     });
   }
 
+  onRequestActions(action: string, requestId: string) {
+    const data = {
+      action: action,
+      requestId: requestId,
+    };
+
+    const subscription = this._requestService
+      .sentRequestActions(data)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        complete: () => {
+          this.requests = this.requests.filter((request) => {
+            request._id !== data.requestId;
+          });
+        },
+      });
+
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+  }
+
   // related to modal
   @ViewChild(CdkPortal) portal!: CdkPortal;
 
