@@ -38,12 +38,12 @@ export class ChatInputBoxComponent {
 
     if (text) {
       let data: MessageBody = {
-        text,
-        conversationId: this.selectedConversation.conversation[0]._id,
-        type: this.selectedConversation.conversation[0].type,
+        content: text,
+        conversation: this.selectedConversation.conversation[0]._id,
+        messageType: this.selectedConversation.conversation[0].type,
       };
 
-      if (data.type === 'single') {
+      if (data.messageType === 'single') {
         data.userId = this.selectedConversation.users[0]._id;
       }
 
@@ -51,7 +51,7 @@ export class ChatInputBoxComponent {
 
       this._chatInputDataService.sendMessage({
         sender: this.userId,
-        conversation: data.conversationId,
+        conversation: data.conversation,
         content: text,
         messageType: 'text',
         createdAt: String(new Date()),
