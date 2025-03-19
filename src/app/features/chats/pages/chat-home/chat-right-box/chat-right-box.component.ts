@@ -1,4 +1,4 @@
-import { Component, DestroyRef, signal } from '@angular/core';
+import { Component, DestroyRef, ElementRef, signal, ViewChild } from '@angular/core';
 import { ChatSelectedConversationService } from '../../../services/chat-selected-conversation.service';
 import { Conversations } from '../chat-home.model';
 import { ChatInputBoxComponent } from "./chat-input-box/chat-input-box.component";
@@ -20,6 +20,13 @@ export class ChatRightBoxComponent {
     
   ) {
     this.subscribeToSelectedUsers();
+  }
+
+  @ViewChild('scrollableDiv') scrollableDiv!: ElementRef;
+
+  scrollChatDiv() {
+    this.scrollableDiv.nativeElement.scrollTop =
+      this.scrollableDiv.nativeElement.scrollHeight;
   }
 
   subscribeToSelectedUsers() {

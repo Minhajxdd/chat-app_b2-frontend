@@ -21,14 +21,14 @@
   }
 </header>
 
-<section class="corpo_conversa">
+<section class="corpo_conversa" #scrollableDiv>
   <div [isSelected]="isSelected()" app-chat-body>
   
 </div>
 </section>
 
 @if (isSelected()) {
-  <form app-chat-input-box>
+  <form (messageTrigger)="scrollChatDiv()" app-chat-input-box>
 
   </form>
 

@@ -1,4 +1,4 @@
-import { Component, DestroyRef } from '@angular/core';
+import { Component, DestroyRef, output } from '@angular/core';
 import { ChatSocketService } from '../../../../services/chat-socket.service';
 import { FormsModule } from '@angular/forms';
 import { ChatSelectedConversationService } from '../../../../services/chat-selected-conversation.service';
@@ -14,6 +14,8 @@ import { UserState } from '../../../../../../shared/state/User/user.state';
   styleUrl: './chat-input-box.component.css',
 })
 export class ChatInputBoxComponent {
+  messageTrigger = output();
+
   textInput: string = '';
   userId: string = '';
 
@@ -44,6 +46,8 @@ export class ChatInputBoxComponent {
       if (data.type === 'single') {
         data.userId = this.selectedConversation.users[0]._id;
       }
+
+      this.messageTrigger.emit();
 
       this._chatInputDataService.sendMessage({
         sender: this.userId,
