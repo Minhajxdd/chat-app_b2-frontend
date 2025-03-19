@@ -1,8 +1,9 @@
 <div>
-    @if(isSelected()) {
-        <div app-msg-receive-box> </div>
-        <div app-msg-sent-box> </div>
+  @if(isSelected()) { @for (receivedMessage of receivedMessages; track
+  receivedMessage.time) { @if (receivedMessage.sender === userId) {
+  <div  [message]="receivedMessage" app-msg-sent-box></div>
 
-    }
-    
+  } @else {
+  <div app-msg-receive-box></div>
+  } } }
 </div>
