@@ -40,7 +40,7 @@ export class UserState {
       );
   }
 
-  getDataByType(type: UserKeys): Observable<string | null> {
+  getData(type: UserKeys): Observable<string | null> {
     return this.data$.pipe(map((data) => (data ? data[type] : null)));
   }
 }
