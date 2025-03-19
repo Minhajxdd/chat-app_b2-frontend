@@ -1,5 +1,13 @@
 <div>
   @if(isSelected()) { 
+
+    @for (existingMessage of existingMessages; track existingMessage._id) {
+      @if (existingMessage.sender === userId) {
+        <div  [message]="existingMessage" app-msg-sent-box></div>
+      } @else {
+        <div [message]="existingMessage" app-msg-receive-box></div>
+      }
+    }
     
     @for (receivedMessage of receivedMessages; track receivedMessage.createdAt) { 
       @if (receivedMessage.sender === userId) {

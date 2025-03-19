@@ -1,7 +1,13 @@
-import { Component, DestroyRef, ElementRef, signal, ViewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { ChatSelectedConversationService } from '../../../services/chat-selected-conversation.service';
 import { Conversations } from '../chat-home.model';
-import { ChatInputBoxComponent } from "./chat-input-box/chat-input-box.component";
+import { ChatInputBoxComponent } from './chat-input-box/chat-input-box.component';
 import { ChatBodyComponent } from './chat-body/chat-body.component';
 
 @Component({
@@ -17,7 +23,6 @@ export class ChatRightBoxComponent {
   constructor(
     private readonly _chatSelectedConversationService: ChatSelectedConversationService,
     private readonly _destoryRef: DestroyRef
-    
   ) {
     this.subscribeToSelectedUsers();
   }
@@ -34,14 +39,17 @@ export class ChatRightBoxComponent {
       .getConversationObservable()
       .subscribe((data) => {
         if (data) {
-          console.log(data)
           this.isSelected.set(true);
           this.selectedConversation = data;
+
+          setTimeout(() => {
+            this.scrollChatDiv();
+          }, 55);
         }
       });
 
-      this._destoryRef.onDestroy(() => {
-        subscription.unsubscribe()
-      })
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
   }
 }

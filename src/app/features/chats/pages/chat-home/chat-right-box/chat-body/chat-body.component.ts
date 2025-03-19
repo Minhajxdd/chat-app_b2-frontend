@@ -48,10 +48,6 @@ export class ChatBodyComponent {
     this.subscribeToSelectedUsers();
   }
 
-  ngOnInit(): void {
-    // this.fetchMessages()
-  }
-
   fetchMessages() {
     this.page++;
 
