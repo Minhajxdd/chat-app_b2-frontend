@@ -1,8 +1,6 @@
 import {
   Component,
   DestroyRef,
-  inject,
-  ViewEncapsulation,
 } from '@angular/core';
 import { ChatSocketService } from '../../services/chat-socket.service';
 import { ChatRightBoxComponent } from './chat-right-box/chat-right-box.component';
