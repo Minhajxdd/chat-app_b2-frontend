@@ -29,6 +29,7 @@ export class ChatBodyComponent {
     const subscription = this._chatSocketService.on('message').subscribe({
       next: (data: { data: MessageDataModel }) => {
         this.receivedMessages.push(data.data);
+        console.log(data.data)
       },
     });
     this._destoryRef.onDestroy(() => {

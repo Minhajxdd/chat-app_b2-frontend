@@ -4,6 +4,6 @@
   <div  [message]="receivedMessage" app-msg-sent-box></div>
 
   } @else {
-  <div app-msg-receive-box></div>
+  <div [message]="receivedMessage" app-msg-receive-box></div>
   } } }
 </div>

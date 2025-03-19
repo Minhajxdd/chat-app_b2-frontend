@@ -1,3 +1,3 @@
-<div class="message-box receive">
-  <p>Hi bro.<span>12:00</span></p>
+<div class="message-box receive mt-2">
+  <p> {{ message().text }} <span> {{message().time | date: 'hh:mm a'}} </span></p>
 </div>
