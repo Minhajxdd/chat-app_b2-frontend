@@ -26,13 +26,13 @@ export class UserState {
     });
   }
 
-  fetchData(): Observable<UserModel> {
+  fetchData(): Observable<{ data: UserModel }> {
     return this.http
-      .get<UserModel>(`${environment.back_end}/profile/user`, {
+      .get<{ data: UserModel }>(`${environment.back_end}/profile/user`, {
         withCredentials: true,
       })
       .pipe(
-        tap((data) => this.dataSubject.next(data)),
+        tap((data) => this.dataSubject.next(data.data)),
         catchError((error) => {
           console.error('Error fetching data', error);
           return throwError(error);

@@ -31,6 +31,11 @@ export class ChatHomeComponent {
     this._chatSocketService.emit('enter-chats', {});
 
     this.getUsers();
+
+    setTimeout(() => {
+        console.log('testin haiaiahaia');
+        this._userState.getData('email').subscribe((data) => console.log(data));
+    }, 1000);
   }
 
   selectConversation(data: Conversations) {
