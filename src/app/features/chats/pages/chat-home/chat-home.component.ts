@@ -1,7 +1,4 @@
-import {
-  Component,
-  DestroyRef,
-} from '@angular/core';
+import { Component, DestroyRef } from '@angular/core';
 import { ChatSocketService } from '../../services/chat-socket.service';
 import { ChatRightBoxComponent } from './chat-right-box/chat-right-box.component';
 import { ChatHomeService } from './chat-home.service';
@@ -31,11 +28,6 @@ export class ChatHomeComponent {
     this._chatSocketService.emit('enter-chats', {});
 
     this.getUsers();
-
-    setTimeout(() => {
-        console.log('testin haiaiahaia');
-        this._userState.getData('email').subscribe((data) => console.log(data));
-    }, 1000);
   }
 
   selectConversation(data: Conversations) {
