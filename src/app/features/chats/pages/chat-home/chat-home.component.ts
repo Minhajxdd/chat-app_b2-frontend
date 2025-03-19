@@ -18,16 +18,14 @@ import { ChatSelectedConversationService } from '../../services/chat-selected-co
   styleUrl: './chat-home.component.css',
 })
 export class ChatHomeComponent {
-  private readonly _chatSocketService = inject(ChatSocketService);
-  private readonly _chatHomeService = inject(ChatHomeService);
-  private readonly _destroyRef = inject(DestroyRef);
-  private readonly _chatSelectedConversationService = inject(
-    ChatSelectedConversationService
-  );
-
   conversations: Conversations[] = [];
 
-  constructor() {
+  constructor(
+    private readonly _chatSocketService: ChatSocketService,
+    private readonly _chatHomeService: ChatHomeService,
+    private readonly _destroyRef: DestroyRef,
+    private readonly _chatSelectedConversationService: ChatSelectedConversationService
+  ) {
     this._chatSocketService.connect();
 
     this._chatSocketService.emit('enter-chats', {});
@@ -38,7 +36,6 @@ export class ChatHomeComponent {
   selectConversation(data: Conversations) {
     this._chatSelectedConversationService.setConversation(data);
   }
-
 
   getUsers() {
     const subscription = this._chatHomeService.getUsers().subscribe({
