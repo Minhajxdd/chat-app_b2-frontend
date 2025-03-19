@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { ChatInputDataModel } from './chat-input.model';
+import { ChatMessageModel } from '../chat-body/chat-body.type';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChatInputDataService {
-  private messageSubject = new Subject<ChatInputDataModel>();
+  private messageSubject = new Subject<ChatMessageModel>();
 
-  message$: Observable<ChatInputDataModel> = this.messageSubject.asObservable();
+  message$: Observable<ChatMessageModel> = this.messageSubject.asObservable();
 
-  sendMessage(message: ChatInputDataModel) {
+  sendMessage(message: ChatMessageModel) {
     this.messageSubject.next(message);
   }
 }

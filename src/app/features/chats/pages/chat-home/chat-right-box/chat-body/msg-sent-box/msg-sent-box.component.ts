@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { MessageDataModel } from '../chat-body.type';
+import { ChatMessageModel } from '../chat-body.type';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -9,5 +9,5 @@ import { DatePipe } from '@angular/common';
   styleUrl: './msg-sent-box.component.css'
 })
 export class MsgSentBoxComponent {
-  message = input.required<MessageDataModel>();
+  message = input.required<ChatMessageModel>();
 }

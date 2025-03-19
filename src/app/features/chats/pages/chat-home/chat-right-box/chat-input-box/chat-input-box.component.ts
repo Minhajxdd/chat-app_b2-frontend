@@ -52,8 +52,9 @@ export class ChatInputBoxComponent {
       this._chatInputDataService.sendMessage({
         sender: this.userId,
         conversation: data.conversationId,
-        text: text,
-        time: String(new Date()),
+        content: text,
+        messageType: 'text',
+        createdAt: String(new Date()),
       });
 
       this._chatSocketService.emit('message', data);

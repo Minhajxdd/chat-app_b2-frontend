@@ -9,7 +9,7 @@ import { MsgReceiveBoxComponent } from './msg-receive-box/msg-receive-box.compon
 import { MsgSentBoxComponent } from './msg-sent-box/msg-sent-box.component';
 import { ChatSocketService } from '../../../../services/chat-socket.service';
 import { UserState } from '../../../../../../shared/state/User/user.state';
-import { ChatMessageModel, MessageDataModel } from './chat-body.type';
+import { ChatMessageModel } from './chat-body.type';
 import { ChatInputDataService } from '../chat-input-box/chat-input-data.service';
 import { ChatBodyService } from './chat-body.service';
 import { ChatSelectedConversationService } from '../../../../services/chat-selected-conversation.service';
@@ -28,7 +28,7 @@ export class ChatBodyComponent {
 
   existingMessages: ChatMessageModel[] = [];
 
-  receivedMessages: MessageDataModel[] = [];
+  receivedMessages: ChatMessageModel[] = [];
 
   page: number = 0;
 
@@ -70,7 +70,7 @@ export class ChatBodyComponent {
 
   subscribeToMessage() {
     const subscription = this._chatSocketService.on('message').subscribe({
-      next: (data: { data: MessageDataModel }) => {
+      next: (data: { data: ChatMessageModel }) => {
         this.receivedMessages.push(data.data);
 
         this.messageTrigger.emit();
