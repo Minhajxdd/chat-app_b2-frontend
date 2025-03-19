@@ -1,4 +1,4 @@
-import { Component, DestroyRef, input } from '@angular/core';
+import { Component, DestroyRef, input, output } from '@angular/core';
 import { MsgReceiveBoxComponent } from './msg-receive-box/msg-receive-box.component';
 import { MsgSentBoxComponent } from './msg-sent-box/msg-sent-box.component';
 import { ChatSocketService } from '../../../../services/chat-socket.service';
@@ -13,6 +13,8 @@ import { ChatInputDataService } from '../chat-input-box/chat-input-data.service'
   styleUrl: './chat-body.component.css',
 })
 export class ChatBodyComponent {
+  messageTrigger = output();
+
   isSelected = input.required<boolean>();
   userId: string = '';
 
@@ -33,7 +35,8 @@ export class ChatBodyComponent {
     const subscription = this._chatSocketService.on('message').subscribe({
       next: (data: { data: MessageDataModel }) => {
         this.receivedMessages.push(data.data);
-        console.log(data.data);
+        
+        this.messageTrigger.emit();
       },
     });
     this._destoryRef.onDestroy(() => {

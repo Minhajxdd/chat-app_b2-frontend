@@ -22,7 +22,7 @@
 </header>
 
 <section class="corpo_conversa" #scrollableDiv>
-  <div [isSelected]="isSelected()" app-chat-body>
+  <div (messageTrigger)="scrollChatDiv()" [isSelected]="isSelected()" app-chat-body>
   
 </div>
 </section>
