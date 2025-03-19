@@ -1,9 +1,21 @@
 <div>
-  @if(isSelected()) { @for (receivedMessage of receivedMessages; track
-  receivedMessage.time) { @if (receivedMessage.sender === userId) {
-  <div  [message]="receivedMessage" app-msg-sent-box></div>
+  @if(isSelected()) { 
 
-  } @else {
-  <div [message]="receivedMessage" app-msg-receive-box></div>
-  } } }
+    <!-- @for (existingMessage of existingMessages; track existingMessage._id) {
+      @if (existingMessage.sender === userId) {
+        <div  [message]="existingMessage" app-msg-sent-box></div>
+      } @else {
+        <div [message]="existingMessage" app-msg-receive-box></div>
+      } 
+    } -->
+    
+    @for (receivedMessage of receivedMessages; track receivedMessage.time) { 
+      @if (receivedMessage.sender === userId) {
+        <div  [message]="receivedMessage" app-msg-sent-box></div>
+      } @else {
+        <div [message]="receivedMessage" app-msg-receive-box></div>
+      } 
+    } 
+
+}
 </div>

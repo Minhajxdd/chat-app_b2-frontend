@@ -37,7 +37,6 @@ export class ChatHomeComponent {
   getUsers() {
     const subscription = this._chatHomeService.getUsers().subscribe({
       next: (data) => {
-        console.log(data);
         this.conversations = data.data;
       },
     });

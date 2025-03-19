@@ -34,6 +34,7 @@ export class ChatRightBoxComponent {
       .getConversationObservable()
       .subscribe((data) => {
         if (data) {
+          console.log(data)
           this.isSelected.set(true);
           this.selectedConversation = data;
         }

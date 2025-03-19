@@ -1,10 +1,18 @@
-import { Component, DestroyRef, input, output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DestroyRef,
+  input,
+  output,
+} from '@angular/core';
 import { MsgReceiveBoxComponent } from './msg-receive-box/msg-receive-box.component';
 import { MsgSentBoxComponent } from './msg-sent-box/msg-sent-box.component';
 import { ChatSocketService } from '../../../../services/chat-socket.service';
 import { UserState } from '../../../../../../shared/state/User/user.state';
-import { MessageDataModel } from './chat-body.type';
+import { ChatMessageModel, MessageDataModel } from './chat-body.type';
 import { ChatInputDataService } from '../chat-input-box/chat-input-data.service';
+import { ChatBodyService } from './chat-body.service';
+import { ChatSelectedConversationService } from '../../../../services/chat-selected-conversation.service';
 
 @Component({
   selector: '[app-chat-body]',
@@ -18,24 +26,53 @@ export class ChatBodyComponent {
   isSelected = input.required<boolean>();
   userId: string = '';
 
+  existingMessages: ChatMessageModel[] = [];
+
   receivedMessages: MessageDataModel[] = [];
+
+  page: number = 0;
+
+  conversationId: string = '';
 
   constructor(
     private readonly _chatSocketService: ChatSocketService,
     private readonly _destoryRef: DestroyRef,
     private readonly _userState: UserState,
-    private readonly _chatInputDataService: ChatInputDataService
+    private readonly _chatInputDataService: ChatInputDataService,
+    private readonly _chatBodyService: ChatBodyService,
+    private readonly _chatSelectedConversationService: ChatSelectedConversationService
   ) {
     this.subscribeToMessage();
     this.subscribeToInputMessages();
     this.getUserId();
+    this.subscribeToSelectedUsers();
+  }
+
+  ngOnInit(): void {
+    // this.fetchMessages()
+  }
+
+  fetchMessages() {
+    this.page++;
+
+    const subscription = this._chatBodyService
+      .fetchChats(this.conversationId, this.page)
+      .subscribe({
+        next: (data) => {
+          this.existingMessages = data.data;
+        },
+      });
+
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
   }
 
   subscribeToMessage() {
     const subscription = this._chatSocketService.on('message').subscribe({
       next: (data: { data: MessageDataModel }) => {
         this.receivedMessages.push(data.data);
-        
+
         this.messageTrigger.emit();
       },
     });
@@ -47,9 +84,6 @@ export class ChatBodyComponent {
   subscribeToInputMessages() {
     const subscription = this._chatInputDataService.message$.subscribe(
       (data) => {
-        console.log('send data');
-        console.log(this.userId)
-        console.log(data);
         this.receivedMessages.push(data);
       }
     );
@@ -63,6 +97,24 @@ export class ChatBodyComponent {
     const subscription = this._userState.getData('_id').subscribe((data) => {
       if (data) this.userId = data;
     });
+
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+  }
+
+  subscribeToSelectedUsers() {
+    const subscription = this._chatSelectedConversationService
+      .getConversationObservable()
+      .subscribe((data) => {
+        if (data) {
+          this.conversationId = data.conversation[0]._id;
+
+          this.page = 0;
+
+          this.fetchMessages();
+        }
+      });
 
     this._destoryRef.onDestroy(() => {
       subscription.unsubscribe();
