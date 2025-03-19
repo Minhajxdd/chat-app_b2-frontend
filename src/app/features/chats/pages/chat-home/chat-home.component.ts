@@ -8,6 +8,7 @@ import { ChatHomeService } from './chat-home.service';
 import { Conversations } from './chat-home.model';
 import { ChatTopHeaderComponent } from './chat-top-header/chat-top-header.component';
 import { ChatSelectedConversationService } from '../../services/chat-selected-conversation.service';
+import { UserState } from '../../../../shared/state/User/user.state';
 
 @Component({
   selector: 'app-chat-home',
@@ -22,7 +23,8 @@ export class ChatHomeComponent {
     private readonly _chatSocketService: ChatSocketService,
     private readonly _chatHomeService: ChatHomeService,
     private readonly _destroyRef: DestroyRef,
-    private readonly _chatSelectedConversationService: ChatSelectedConversationService
+    private readonly _chatSelectedConversationService: ChatSelectedConversationService,
+    private readonly _userState: UserState
   ) {
     this._chatSocketService.connect();
 
