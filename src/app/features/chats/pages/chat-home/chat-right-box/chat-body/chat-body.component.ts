@@ -2,6 +2,8 @@ import { Component, DestroyRef, input } from '@angular/core';
 import { MsgReceiveBoxComponent } from './msg-receive-box/msg-receive-box.component';
 import { MsgSentBoxComponent } from './msg-sent-box/msg-sent-box.component';
 import { ChatSocketService } from '../../../../services/chat-socket.service';
+import { UserState } from '../../../../../../shared/state/User/user.state';
+import { MessageDataModel } from './chat-body.type';
 
 @Component({
   selector: '[app-chat-body]',
@@ -11,21 +13,32 @@ import { ChatSocketService } from '../../../../services/chat-socket.service';
 })
 export class ChatBodyComponent {
   isSelected = input.required<boolean>();
+  userId: string = '';
+
+  receivedMessages: MessageDataModel[] = [];
 
   constructor(
     private readonly _chatSocketService: ChatSocketService,
-    private readonly _destoryRef: DestroyRef
+    private readonly _destoryRef: DestroyRef,
+    private readonly _userState: UserState
   ) {
     this.subscribeToMessage();
   }
 
   subscribeToMessage() {
-    console.log('these are some test log to check the subscriptiongs of the state')
     const subscription = this._chatSocketService.on('message').subscribe({
-      next: (data) => {
-        console.log('message recived from');
-        console.log(data);
+      next: (data: { data: MessageDataModel }) => {
+        this.receivedMessages.push(data.data);
       },
+    });
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+  }
+
+  getUserId() {
+    const subscription = this._userState.getData('_id').subscribe((data) => {
+      if (data) this.userId = data;
     });
 
     this._destoryRef.onDestroy(() => {
