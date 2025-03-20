@@ -120,6 +120,8 @@ export class ChatBodyComponent {
 
           this.existingMessages = [];
 
+          this.receivedMessages = [];
+
           this.fetchMessages();
         }
       });
