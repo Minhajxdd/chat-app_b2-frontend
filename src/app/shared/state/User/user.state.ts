@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { DestroyRef, Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
@@ -19,10 +19,11 @@ export class UserState {
 
   data$ = this.dataSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-    const subscription = this.fetchData().subscribe((data) => {
-      console.log(data);
-      console.log('from user state');
+  constructor(private http: HttpClient, private _destroyRef: DestroyRef) {
+    const subscription = this.fetchData().subscribe();
+
+    this._destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
     });
   }
 
