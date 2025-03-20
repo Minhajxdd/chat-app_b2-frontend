@@ -44,7 +44,7 @@ export class ChatRightBoxComponent {
 
           setTimeout(() => {
             this.scrollChatDiv();
-          }, 55);
+          }, 200);
         }
       });
 
