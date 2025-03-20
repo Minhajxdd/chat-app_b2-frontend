@@ -102,6 +102,8 @@ export class ChatBodyComponent {
         if (data) {
           this.conversationId = data.conversation[0]._id;
 
+          this.existingMessages = [];
+
           this.fetchMessages();
         }
       });
