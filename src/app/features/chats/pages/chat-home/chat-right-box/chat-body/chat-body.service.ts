@@ -9,12 +9,15 @@ import { ChatMessageModel } from './chat-body.type';
 export class ChatBodyService {
   constructor(private readonly http: HttpClient) {}
 
-  fetchChats(conversationId: string, page: number) {
-    return this.http.get<{ data: ChatMessageModel[] }>(
-      `${environment.back_end}/chat/conversation/messages?id=${conversationId}&page=${page}`,
-      {
-        withCredentials: true,
-      }
-    );
+  fetchChats(conversationId: string, lastMessageId: string | null = null) {
+    let url = `${environment.back_end}/chat/conversation/messages?id=${conversationId}`;
+
+    if (lastMessageId) {
+      url += `&lastMessageId=${lastMessageId}`;
+    }
+
+    return this.http.get<{ data: ChatMessageModel[] }>(url, {
+      withCredentials: true,
+    });
   }
 }

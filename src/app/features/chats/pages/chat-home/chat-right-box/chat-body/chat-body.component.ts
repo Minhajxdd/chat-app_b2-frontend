@@ -30,8 +30,6 @@ export class ChatBodyComponent {
 
   receivedMessages: ChatMessageModel[] = [];
 
-  page: number = 0;
-
   conversationId: string = '';
 
   constructor(
@@ -49,13 +47,11 @@ export class ChatBodyComponent {
   }
 
   fetchMessages() {
-    this.page++;
-
     const subscription = this._chatBodyService
-      .fetchChats(this.conversationId, this.page)
+      .fetchChats(this.conversationId, this.existingMessages[0]?._id ?? null)
       .subscribe({
         next: (data) => {
-          this.existingMessages = data.data;
+          this.existingMessages = [...data.data, ...this.existingMessages];
         },
       });
 
@@ -105,8 +101,6 @@ export class ChatBodyComponent {
       .subscribe((data) => {
         if (data) {
           this.conversationId = data.conversation[0]._id;
-
-          this.page = 0;
 
           this.fetchMessages();
         }
