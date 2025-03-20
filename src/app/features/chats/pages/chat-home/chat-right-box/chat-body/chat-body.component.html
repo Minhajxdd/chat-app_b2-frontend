@@ -9,7 +9,7 @@
       }
     }
     
-    @for (receivedMessage of receivedMessages; track receivedMessage.createdAt) { 
+    @for (receivedMessage of receivedMessages; track $index) { 
       @if (receivedMessage.sender === userId) {
         <div  [message]="receivedMessage" app-msg-sent-box></div>
       } @else {
