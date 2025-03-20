@@ -34,6 +34,14 @@ export class ChatRightBoxComponent {
       this.scrollableDiv.nativeElement.scrollHeight;
   }
 
+  scrollChatDivOnTop(event: Event) {
+    const target = event.target as HTMLElement;
+    if (target.scrollTop === 0) {
+      console.log('On Top On Top');
+    }
+  }
+
+
   subscribeToSelectedUsers() {
     const subscription = this._chatSelectedConversationService
       .getConversationObservable()

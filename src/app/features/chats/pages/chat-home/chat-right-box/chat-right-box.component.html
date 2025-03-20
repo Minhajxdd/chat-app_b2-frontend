@@ -21,7 +21,7 @@
   }
 </header>
 
-<section class="corpo_conversa" #scrollableDiv>
+<section class="corpo_conversa" #scrollableDiv (scroll)="scrollChatDivOnTop($event)">
   <div (messageTrigger)="scrollChatDiv()" [isSelected]="isSelected()" app-chat-body>
   
 </div>
