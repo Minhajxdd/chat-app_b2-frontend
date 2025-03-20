@@ -13,6 +13,7 @@ import { ChatMessageModel } from './chat-body.type';
 import { ChatInputDataService } from '../chat-input-box/chat-input-data.service';
 import { ChatBodyService } from './chat-body.service';
 import { ChatSelectedConversationService } from '../../../../services/chat-selected-conversation.service';
+import { ChatEventService } from '../chat-event.service';
 
 @Component({
   selector: '[app-chat-body]',
@@ -38,12 +39,14 @@ export class ChatBodyComponent {
     private readonly _userState: UserState,
     private readonly _chatInputDataService: ChatInputDataService,
     private readonly _chatBodyService: ChatBodyService,
-    private readonly _chatSelectedConversationService: ChatSelectedConversationService
+    private readonly _chatSelectedConversationService: ChatSelectedConversationService,
+    private readonly _chatEventService: ChatEventService
   ) {
     this.subscribeToMessage();
     this.subscribeToInputMessages();
     this.getUserId();
     this.subscribeToSelectedUsers();
+    this.subscribeOnTopScrollEvent();
   }
 
   fetchMessages() {
@@ -71,6 +74,19 @@ export class ChatBodyComponent {
     this._destoryRef.onDestroy(() => {
       subscription.unsubscribe();
     });
+  }
+
+  subscribeOnTopScrollEvent() {
+    const subscription = this._chatEventService.scrollToTop$.subscribe(() => {
+
+      if(this.existingMessages.length === 10) {
+        console.log(`On Top On Top!!1`);
+      }
+    });
+
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    })
   }
 
   subscribeToInputMessages() {

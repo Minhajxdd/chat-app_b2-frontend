@@ -9,6 +9,7 @@ import { ChatSelectedConversationService } from '../../../services/chat-selected
 import { Conversations } from '../chat-home.model';
 import { ChatInputBoxComponent } from './chat-input-box/chat-input-box.component';
 import { ChatBodyComponent } from './chat-body/chat-body.component';
+import { ChatEventService } from './chat-event.service';
 
 @Component({
   selector: '[app-chat-right-box]',
@@ -22,7 +23,8 @@ export class ChatRightBoxComponent {
 
   constructor(
     private readonly _chatSelectedConversationService: ChatSelectedConversationService,
-    private readonly _destoryRef: DestroyRef
+    private readonly _destoryRef: DestroyRef,
+    private readonly _chatEventService: ChatEventService
   ) {
     this.subscribeToSelectedUsers();
   }
@@ -37,7 +39,7 @@ export class ChatRightBoxComponent {
   scrollChatDivOnTop(event: Event) {
     const target = event.target as HTMLElement;
     if (target.scrollTop === 0) {
-      console.log('On Top On Top');
+      this._chatEventService.emitScrollToTop();
     }
   }
 
