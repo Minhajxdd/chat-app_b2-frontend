@@ -80,7 +80,7 @@ export class ChatBodyComponent {
     const subscription = this._chatEventService.scrollToTop$.subscribe(() => {
 
       if(this.existingMessages.length === 10) {
-        console.log(`On Top On Top!!1`);
+        this.fetchMessages();
       }
     });
 
