@@ -20,7 +20,7 @@ import { Requests } from './requests.types';
   templateUrl: './requests-modal.component.html',
   styleUrl: './requests-modal.component.css',
 })
-export class RequestsModalComponent implements AfterViewInit, OnChanges {
+export class RequestsModalComponent implements OnChanges {
   isModalOpen = input.required<boolean>();
   emitCloseModal = output();
 
@@ -29,6 +29,7 @@ export class RequestsModalComponent implements AfterViewInit, OnChanges {
   ngOnChanges(): void {
     if (this.isModalOpen() === true) {
       this.openModal();
+      this.fetchRequests();
     }
   }
 
@@ -37,10 +38,6 @@ export class RequestsModalComponent implements AfterViewInit, OnChanges {
     private readonly _requestService: RequestService,
     private readonly _destoryRef: DestroyRef
   ) {}
-
-  ngAfterViewInit(): void {
-    this.fetchRequests();
-  }
 
   fetchRequests() {
     const subscription = this._requestService.getRequests().subscribe({
