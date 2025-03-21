@@ -1,1 +1,62 @@
-<p>chat-conversations-listings works!</p>
+    <section class="listadeconversas">
+      @for (conversation of conversations; track
+      conversation.conversation[0]._id) {
+
+      <div 
+      (click)="selectConversation(conversation)"
+      class="janeladeconversa hover:bg-gray-200">
+        <div class="avatarconversa">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
+            class="usuario"
+          />
+        </div>
+        <div class="detalhes">
+          <aside class="detalhes_nome">
+            <h4>
+              {{ conversation.users[0].fullName }}
+            </h4>
+            <p class="horario">22:40</p>
+          </aside>
+        </div>
+      </div>
+      }
+
+      <div class="janeladeconversa naolida">
+        <div class="avatarconversa">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
+            class="usuario"
+          />
+        </div>
+        <div class="detalhes">
+          <aside class="detalhes_nome">
+            <h4>Minhaj</h4>
+            <p class="horario">12:30</p>
+          </aside>
+          <aside class="mensagem">
+            <p>my name is mohammed minahj</p>
+            <b>3</b>
+          </aside>
+        </div>
+      </div>
+
+      <div class="janeladeconversa naolida">
+        <div class="avatarconversa">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
+            class="usuario"
+          />
+        </div>
+        <div class="detalhes">
+          <aside class="detalhes_nome">
+            <h4>fjslkjfd</h4>
+            <p class="horario">08:20</p>
+          </aside>
+          <aside class="mensagem">
+            <p>fdsafdafds!</p>
+            <b>5</b>
+          </aside>
+        </div>
+      </div>
+    </section>

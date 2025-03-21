@@ -2,10 +2,10 @@ import { Component, DestroyRef, output } from '@angular/core';
 import { ChatSocketService } from '../../../../services/chat-socket.service';
 import { FormsModule } from '@angular/forms';
 import { ChatSelectedConversationService } from '../../../../services/chat-selected-conversation.service';
-import { Conversations } from '../../chat-home.model';
 import { MessageBody } from './chat.type';
 import { ChatInputDataService } from './chat-input-data.service';
 import { UserState } from '../../../../../../shared/state/User/user.state';
+import { Conversations } from '../../chat-conversations-listings/chat-conversations-listings.model';
 
 @Component({
   selector: '[app-chat-input-box]',

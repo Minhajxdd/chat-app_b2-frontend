@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Conversations } from '../pages/chat-home/chat-home.model';
+import { Conversations } from '../pages/chat-home/chat-conversations-listings/chat-conversations-listings.model';
 
 @Injectable({
   providedIn: 'root',

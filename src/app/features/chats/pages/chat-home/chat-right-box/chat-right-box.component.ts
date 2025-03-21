@@ -6,10 +6,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ChatSelectedConversationService } from '../../../services/chat-selected-conversation.service';
-import { Conversations } from '../chat-home.model';
 import { ChatInputBoxComponent } from './chat-input-box/chat-input-box.component';
 import { ChatBodyComponent } from './chat-body/chat-body.component';
 import { ChatEventService } from './chat-event.service';
+import { Conversations } from '../chat-conversations-listings/chat-conversations-listings.model';
 
 @Component({
   selector: '[app-chat-right-box]',
