@@ -1,14 +1,11 @@
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
 import {
-  AfterViewInit,
   Component,
   DestroyRef,
-  inject,
   input,
   OnChanges,
   output,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { RequestService } from './requests.service';
