@@ -10,7 +10,6 @@ import { Component, input, OnChanges, output, ViewChild } from '@angular/core';
 })
 export class CreateGroupModalComponent implements OnChanges {
   isModalOpen = input.required<boolean>();
-
   emitCloseModal = output();
 
   ngOnChanges(): void {
