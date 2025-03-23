@@ -10,10 +10,11 @@ import { ChatInputBoxComponent } from './chat-input-box/chat-input-box.component
 import { ChatBodyComponent } from './chat-body/chat-body.component';
 import { ChatEventService } from './chat-event.service';
 import { Conversations } from '../chat-conversations-listings/chat-conversations-listings.model';
+import { TopThreeDotComponent } from "./top-three-dot/top-three-dot.component";
 
 @Component({
   selector: '[app-chat-right-box]',
-  imports: [ChatInputBoxComponent, ChatBodyComponent],
+  imports: [ChatInputBoxComponent, ChatBodyComponent, TopThreeDotComponent],
   templateUrl: './chat-right-box.component.html',
   styleUrl: './chat-right-box.component.css',
 })
@@ -21,12 +22,18 @@ export class ChatRightBoxComponent {
   isSelected = signal(false);
   selectedConversation!: Conversations;
 
+  isThreeDotsToggled = signal(false);
+
   constructor(
     private readonly _chatSelectedConversationService: ChatSelectedConversationService,
     private readonly _destoryRef: DestroyRef,
     private readonly _chatEventService: ChatEventService
   ) {
     this.subscribeToSelectedUsers();
+  }
+
+  toggleThreeDot() {
+    this.isThreeDotsToggled.set(!this.isThreeDotsToggled());
   }
 
   @ViewChild('scrollableDiv') scrollableDiv!: ElementRef;

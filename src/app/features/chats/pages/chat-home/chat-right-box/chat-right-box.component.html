@@ -19,8 +19,12 @@
     }
 
   </div>
-  <ul class="opcoes">
-    <li><i class="bx bx-dots-vertical-rounded"></i></li>
+  <ul (click)="toggleThreeDot()" class="opcoes">
+    <li><i class="bx bx-dots-vertical-rounded">
+      @if (isThreeDotsToggled()) {
+        <app-top-three-dot></app-top-three-dot>
+      }
+    </i></li>
   </ul>
   }
 </header>
