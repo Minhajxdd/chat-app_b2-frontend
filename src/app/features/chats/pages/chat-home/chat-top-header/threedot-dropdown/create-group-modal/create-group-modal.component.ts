@@ -2,13 +2,20 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
 import {
   Component,
+  DestroyRef,
   input,
   OnChanges,
   OnInit,
   output,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { CreateGroupModalService } from './create-group-modal.service';
 
 @Component({
   selector: 'app-create-group-modal',
@@ -37,15 +44,43 @@ export class CreateGroupModalComponent implements OnChanges, OnInit {
     }, 500);
   }
 
-  constructor(private overlay: Overlay, private fb: FormBuilder) {}
+  constructor(
+    private overlay: Overlay,
+    private fb: FormBuilder,
+    private readonly _createGroupModalService: CreateGroupModalService,
+    private readonly _destoryRef: DestroyRef
+  ) {}
 
   onSubmit(): void {
     if (this.groupForm.valid) {
-      console.log('Form Submitted Successfully!', this.groupForm.value);
+      this.submitData();
     } else {
       console.log('Form is not valid!');
       this.groupForm.markAllAsTouched();
     }
+  }
+
+  serverFormErrorMessage:string = ''
+
+  submitData(): void {
+    const title = this.groupForm.value.groupTitle;
+    const descripton = this.groupForm.value.groupDescription;
+    
+    const subscription = this._createGroupModalService.createGroup(title, descripton)
+    .subscribe({
+      next: (data) => {
+        console.log(`this is the subscribed data`);
+        console.log(data);
+      },
+      error: (err) => {
+        this.serverFormErrorMessage = err;
+      },
+      
+    })
+
+    this._destoryRef.onDestroy(() => {
+      subscription.unsubscribe();
+    })
   }
 
   // related to modal

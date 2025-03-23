@@ -27,6 +27,12 @@
                     Group name is required.
                   </div>
             }
+
+            @if (serverFormErrorMessage) {
+              <div class="text-red-600 text-sm mt-1">
+                {{ serverFormErrorMessage }}
+              </div>         
+            }
           </div>
         </div>
         
