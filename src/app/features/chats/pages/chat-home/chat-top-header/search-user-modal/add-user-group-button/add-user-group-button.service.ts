@@ -21,11 +21,12 @@ export class AddUserGroupButtonService {
     );
   }
 
-  requestConversation(otherUserId: string) {
+  requestConversation(otherUserId: string, conversationId: string) {
     return this._http.post(
       `${environment.back_end}/chat/group/request-conversation`,
       {
         otherUserId,
+        conversationId
       },
       {
         withCredentials: true,

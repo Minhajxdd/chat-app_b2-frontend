@@ -84,7 +84,7 @@ export class AddUserGroupButtonComponent {
     console.log('requesting....');
 
     const subscription = this._addUserGroupButtonService
-      .requestConversation(this.userId())
+      .requestConversation(this.userId(), this.conversationId)
       .subscribe({
         next: (data) => {
           console.log(data);
