@@ -27,6 +27,8 @@ export class ChatConversationsListingsComponent implements AfterViewInit {
       .getConversations()
       .subscribe({
         next: (data) => {
+          console.log('from listings');
+          console.log(data);
           this.conversations = data.data;
         },
       });

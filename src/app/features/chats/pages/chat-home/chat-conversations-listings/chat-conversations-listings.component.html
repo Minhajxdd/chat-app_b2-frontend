@@ -2,26 +2,50 @@
       @for (conversation of conversations; track
       conversation.conversation[0]._id) {
 
-      <div 
-      (click)="selectConversation(conversation)"
-      class="janeladeconversa hover:bg-gray-200">
-        <div class="avatarconversa">
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
-            class="usuario"
-          />
-        </div>
-        <div class="detalhes">
-          <aside class="detalhes_nome">
-            <h4>
-              {{ conversation.users[0].fullName }}
-            </h4>
-            <p class="horario">22:40</p>
-          </aside>
-        </div>
-      </div>
-      }
 
+        @if (conversation.conversation[0].type === 'single') {
+          <div 
+          (click)="selectConversation(conversation)"
+          class="janeladeconversa hover:bg-gray-200">
+            <div class="avatarconversa">
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
+                class="usuario"
+              />
+            </div>
+            <div class="detalhes">
+              <aside class="detalhes_nome">
+                <h4>
+                  {{ conversation.users[0].fullName }}
+                </h4>
+                <p class="horario">22:40</p>
+              </aside>
+            </div>
+          </div>
+        } @else if (conversation.conversation[0].type === 'group') {
+          <div 
+          (click)="selectConversation(conversation)"
+          class="janeladeconversa hover:bg-gray-200">
+            <div class="avatarconversa">
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/536e785fe4b0b84b930da48c/1647629536395-XY6G5LJK3LL7J02NUT50/Online+Dating+Photographer+000001.jpg?format=1500w"
+                class="usuario"
+              />
+            </div>
+            <div class="detalhes">
+              <aside class="detalhes_nome">
+                <h4>
+                  {{ conversation.groupDetails[0].title }}
+                </h4>
+                <p class="horario">22:40</p>
+              </aside>
+            </div>
+          </div>
+        }
+
+    
+      }
+<!-- 
       <div class="janeladeconversa naolida">
         <div class="avatarconversa">
           <img
@@ -58,5 +82,5 @@
             <b>5</b>
           </aside>
         </div>
-      </div>
+      </div> -->
     </section>
