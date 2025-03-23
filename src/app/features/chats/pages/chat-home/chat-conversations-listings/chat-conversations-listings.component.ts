@@ -2,6 +2,7 @@ import { AfterViewInit, Component, DestroyRef } from '@angular/core';
 import { ChatConversationsListingsService } from './chat-conversations-listings.service';
 import { ChatSelectedConversationService } from '../../../services/chat-selected-conversation.service';
 import { Conversations } from './chat-conversations-listings.model';
+import { ChatConversationsListingsEventsService } from './chat-conversations-listsings-events.service';
 
 @Component({
   selector: '[app-chat-conversations-listings]',
@@ -15,8 +16,11 @@ export class ChatConversationsListingsComponent implements AfterViewInit {
   constructor(
     private readonly _chatSelectedConversationService: ChatSelectedConversationService,
     private readonly _chatConversationsListingsService: ChatConversationsListingsService,
+    private readonly _chatConversationsListingsEventsService: ChatConversationsListingsEventsService,
     private readonly _destroyRef: DestroyRef
-  ) {}
+  ) {
+    this.subscibeToEvent();
+  }
 
   ngAfterViewInit() {
     this.getConversations();
@@ -27,10 +31,19 @@ export class ChatConversationsListingsComponent implements AfterViewInit {
       .getConversations()
       .subscribe({
         next: (data) => {
-          console.log('from listings');
-          console.log(data);
           this.conversations = data.data;
         },
+      });
+
+    this._destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+  }
+
+  subscibeToEvent() {
+    const subscription =
+      this._chatConversationsListingsEventsService.event$.subscribe(() => {
+        this.getConversations();
       });
 
     this._destroyRef.onDestroy(() => {

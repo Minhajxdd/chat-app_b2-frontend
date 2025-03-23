@@ -16,6 +16,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CreateGroupModalService } from './create-group-modal.service';
+import { ChatConversationsListingsEventsService } from '../../../chat-conversations-listings/chat-conversations-listsings-events.service';
 
 @Component({
   selector: 'app-create-group-modal',
@@ -46,6 +47,7 @@ export class CreateGroupModalComponent implements OnChanges, OnInit {
     private overlay: Overlay,
     private fb: FormBuilder,
     private readonly _createGroupModalService: CreateGroupModalService,
+    private readonly _chatConversationsListingsEventsService: ChatConversationsListingsEventsService,
     private readonly _destoryRef: DestroyRef
   ) {}
 
@@ -76,6 +78,7 @@ export class CreateGroupModalComponent implements OnChanges, OnInit {
         },
         complete: () => {
           this.closeModal();
+          this._chatConversationsListingsEventsService.emitEvent(null);
         },
       });
 
