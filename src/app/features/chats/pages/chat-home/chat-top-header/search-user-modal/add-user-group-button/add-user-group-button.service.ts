@@ -21,15 +21,15 @@ export class AddUserGroupButtonService {
     );
   }
 
-//   requestConversation(otherUserId: string) {
-//     return this._http.post(
-//       `${environment.back_end}/chat/request-conversation`,
-//       {
-//         otherUserId,
-//       },
-//       {
-//         withCredentials: true,
-//       }
-//     );
-//   }
+  requestConversation(otherUserId: string) {
+    return this._http.post(
+      `${environment.back_end}/chat/group/request-conversation`,
+      {
+        otherUserId,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }

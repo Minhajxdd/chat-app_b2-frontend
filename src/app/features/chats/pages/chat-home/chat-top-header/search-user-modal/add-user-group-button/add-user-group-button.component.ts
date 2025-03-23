@@ -83,21 +83,21 @@ export class AddUserGroupButtonComponent {
 
     console.log('requesting....');
 
-    // const subscription = this._openChatButtonService
-    //   .requestConversation(this.userId())
-    //   .subscribe({
-    //     next: (data) => {
-    //       console.log(data);
+    const subscription = this._addUserGroupButtonService
+      .requestConversation(this.userId())
+      .subscribe({
+        next: (data) => {
+          console.log(data);
 
-    //       this.onCloseModal.emit();
-    //     },
-    //     complete: () => {
-    //       this.requestConversationLoading.set(false);
-    //     },
-    //   });
+          this.onCloseModal.emit();
+        },
+        complete: () => {
+          this.requestConversationLoading.set(false);
+        },
+      });
 
-    // this._destoryRef.onDestroy(() => {
-    //   subscription.unsubscribe();
-    // });
+    this._destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
   }
 }
