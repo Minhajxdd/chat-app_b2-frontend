@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { User } from './search-user.types';
 import { AutocompleteUserBoxesComponent } from './autocomplete-user-boxes/autocomplete-user-boxes.component';
 import { OpenChatButtonComponent } from './open-chat-button/open-chat-button.component';
+import { AddUserGroupButtonComponent } from "./add-user-group-button/add-user-group-button.component";
 
 @Component({
   selector: 'app-search-user-modal',
@@ -23,7 +24,8 @@ import { OpenChatButtonComponent } from './open-chat-button/open-chat-button.com
     FormsModule,
     AutocompleteUserBoxesComponent,
     OpenChatButtonComponent,
-  ],
+    AddUserGroupButtonComponent
+],
   templateUrl: './search-user-modal.component.html',
   styleUrl: './search-user-modal.component.css',
 })
