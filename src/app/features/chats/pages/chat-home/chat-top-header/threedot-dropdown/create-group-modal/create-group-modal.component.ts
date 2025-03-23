@@ -74,6 +74,9 @@ export class CreateGroupModalComponent implements OnChanges, OnInit {
         error: (err) => {
           this.serverFormErrorMessage = err;
         },
+        complete: () => {
+          this.closeModal();
+        },
       });
 
     this._destoryRef.onDestroy(() => {
