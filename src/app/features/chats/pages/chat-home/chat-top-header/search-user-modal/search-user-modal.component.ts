@@ -31,6 +31,8 @@ export class SearchUserModalComponent implements OnChanges {
   private readonly _searchUserService = inject(SearchUserService);
   private readonly _destoryRef = inject(DestroyRef);
 
+  forGroup = input.required<boolean>()
+
   constructor(private overlay: Overlay) {
     this.getSearchedData();
   }

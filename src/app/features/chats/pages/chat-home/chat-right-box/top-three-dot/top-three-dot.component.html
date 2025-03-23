@@ -1,5 +1,5 @@
 <div
-[ngClass]="{ 'hidden': !isToggled() }"
+  [ngClass]="{ hidden: !isToggled() }"
   class="absolute top-[33px] right-[16px] z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden"
   role="menu"
   aria-orientation="vertical"
@@ -7,16 +7,15 @@
   tabindex="-1"
 >
   <div class="py-1" role="none">
-
     @if (chatType() === 'group') {
-        <a
-          (click)="toggleIsAddUserToggled()"
-          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-          role="menuitem"
-          tabindex="-1"
-          id="menu-item-1"
-          >Add User</a
-        >
+    <a
+      (click)="toggleIsAddUserToggled()"
+      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+      role="menuitem"
+      tabindex="-1"
+      id="menu-item-1"
+      >Add User</a
+    >
 
     }
     <a
@@ -36,4 +35,8 @@
   </div>
 </div>
 
-<app-add-user-modal (emitCloseModal)="toggleIsAddUserToggled()" [isModalOpen]="isAddUserToggled()"></app-add-user-modal>
+<app-search-user-modal
+  [forGroup]="true"
+  (onCloseModal)="toggleIsAddUserToggled()"
+  [showModal]="isAddUserToggled()"
+></app-search-user-modal>

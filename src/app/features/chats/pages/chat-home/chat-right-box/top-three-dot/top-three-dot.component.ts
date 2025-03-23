@@ -1,10 +1,10 @@
 import { Component, input, signal } from '@angular/core';
-import { AddUserModalComponent } from "./add-user-modal/add-user-modal.component";
 import { NgClass } from '@angular/common';
+import { SearchUserModalComponent } from "../../chat-top-header/search-user-modal/search-user-modal.component";
 
 @Component({
   selector: 'app-top-three-dot',
-  imports: [AddUserModalComponent, NgClass],
+  imports: [NgClass, SearchUserModalComponent],
   templateUrl: './top-three-dot.component.html',
   styleUrl: './top-three-dot.component.css'
 })

@@ -2,7 +2,14 @@
   <div class="bg-white text-white p-6 rounded-2xl shadow-lg">
     <div class="flex flex-col w-full">
       <div class="mb-3">
-        <h3 class="text-lg text-[#333333] font-semibold">Search Users</h3>
+        <h3 class="text-lg text-[#333333] font-semibold">
+        @if (forGroup()) {
+          Add User
+        } @else {
+          Search Users
+
+        }
+        </h3>
       </div>
 
       <!-- Search Input Container -->
@@ -51,7 +58,13 @@
           Search...
         </button>
         } @else {
-        <app-open-chat-button (onCloseModal)="detachModal()" [userId]="selectedUser?._id || ''"></app-open-chat-button>
+
+          @if (forGroup()) {
+
+          } @else {
+            <app-open-chat-button (onCloseModal)="detachModal()" [userId]="selectedUser?._id || ''"></app-open-chat-button>
+          }
+
         }
       </div>
     </div>
