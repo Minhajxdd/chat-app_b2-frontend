@@ -7,37 +7,41 @@
         class="usuario"
       />
     </div>
-    
+
     @if (selectedConversation.conversation[0].type === 'single') {
     <h4>
       {{ selectedConversation.users[0].fullName }} <br /><span>Online</span>
     </h4>
     } @else if (selectedConversation.conversation[0].type === 'group') {
-      <h4>
-        {{ selectedConversation.groupDetails[0].title }} <br />
-      </h4>
+    <h4>{{ selectedConversation.groupDetails[0].title }} <br /></h4>
     }
-
   </div>
   <ul (click)="toggleThreeDot()" class="opcoes">
-    <li><i class="bx bx-dots-vertical-rounded">
-      @if (isThreeDotsToggled()) {
-        <app-top-three-dot [chatType]="selectedConversation.conversation[0].type"></app-top-three-dot>
-      }
-    </i></li>
+    <li>
+      <i class="bx bx-dots-vertical-rounded">
+        <app-top-three-dot
+          [isToggled]="isThreeDotsToggled()"
+          [chatType]="selectedConversation.conversation[0].type"
+        ></app-top-three-dot>
+      </i>
+    </li>
   </ul>
   }
 </header>
 
-<section class="corpo_conversa" #scrollableDiv (scroll)="scrollChatDivOnTop($event)">
-  <div (messageTrigger)="scrollChatDiv()" [isSelected]="isSelected()" app-chat-body>
-  
-</div>
+<section
+  class="corpo_conversa"
+  #scrollableDiv
+  (scroll)="scrollChatDivOnTop($event)"
+>
+  <div
+    (messageTrigger)="scrollChatDiv()"
+    [isSelected]="isSelected()"
+    app-chat-body
+  ></div>
 </section>
 
 @if (isSelected()) {
-  <form (messageTrigger)="scrollChatDiv()" app-chat-input-box>
+<form (messageTrigger)="scrollChatDiv()" app-chat-input-box></form>
 
-  </form>
-
-  }
+}
