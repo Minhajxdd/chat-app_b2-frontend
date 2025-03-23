@@ -37,11 +37,9 @@ export class CreateGroupModalComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(): void {
-    setTimeout(() => {
-      if (this.isModalOpen() === true) {
-        this.openModal();
-      }
-    }, 500);
+    if (this.isModalOpen() === true) {
+      this.openModal();
+    }
   }
 
   constructor(
@@ -60,27 +58,27 @@ export class CreateGroupModalComponent implements OnChanges, OnInit {
     }
   }
 
-  serverFormErrorMessage:string = ''
+  serverFormErrorMessage: string = '';
 
   submitData(): void {
     const title = this.groupForm.value.groupTitle;
     const descripton = this.groupForm.value.groupDescription;
-    
-    const subscription = this._createGroupModalService.createGroup(title, descripton)
-    .subscribe({
-      next: (data) => {
-        console.log(`this is the subscribed data`);
-        console.log(data);
-      },
-      error: (err) => {
-        this.serverFormErrorMessage = err;
-      },
-      
-    })
+
+    const subscription = this._createGroupModalService
+      .createGroup(title, descripton)
+      .subscribe({
+        next: (data) => {
+          console.log(`this is the subscribed data`);
+          console.log(data);
+        },
+        error: (err) => {
+          this.serverFormErrorMessage = err;
+        },
+      });
 
     this._destoryRef.onDestroy(() => {
       subscription.unsubscribe();
-    })
+    });
   }
 
   // related to modal

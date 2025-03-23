@@ -5,10 +5,15 @@
       <a 
       (click)="onToggleRequestModal()"
       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="menu-item-2">Requests</a>
+      <a 
+      (click)="onToggleCreateGroupModal()"
+      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="menu-item-2">Create Group</a>
+      
+      
       <button (click)="logOut()" type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
     </div>
 </div>
 
 <app-requests-modal (emitCloseModal)="onToggleRequestModal()" [isModalOpen]="isRequestModalOpen()"></app-requests-modal>
 
-<app-create-group-modal [isModalOpen]="true"></app-create-group-modal>
+<app-create-group-modal (emitCloseModal)="onToggleCreateGroupModal()" [isModalOpen]="isCreateGroupModalOpen()"></app-create-group-modal>
