@@ -6,13 +6,17 @@
   tabindex="-1"
 >
   <div class="py-1" role="none">
-    <a
-      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-      role="menuitem"
-      tabindex="-1"
-      id="menu-item-1"
-      >Add User</a
-    >
+
+    @if (chatType() === 'group') {
+        <a
+          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+          role="menuitem"
+          tabindex="-1"
+          id="menu-item-1"
+          >Add User</a
+        >
+
+    }
     <a
       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
       role="menuitem"

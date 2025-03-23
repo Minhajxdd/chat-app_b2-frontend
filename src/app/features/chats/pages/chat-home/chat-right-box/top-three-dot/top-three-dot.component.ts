@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-top-three-dot',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './top-three-dot.component.css'
 })
 export class TopThreeDotComponent {
-
+  chatType = input.required<string>();
 }
