@@ -10,7 +10,8 @@
 
     @if (selectedConversation.conversation[0].type === 'single') {
     <h4>
-      {{ selectedConversation.users[0].fullName }} <br /><span>Online</span>
+      {{ selectedConversation.users[0].fullName }} <br />
+      <!-- <span>Online</span> -->
     </h4>
     } @else if (selectedConversation.conversation[0].type === 'group') {
     <h4>{{ selectedConversation.groupDetails[0].title }} <br /></h4>
