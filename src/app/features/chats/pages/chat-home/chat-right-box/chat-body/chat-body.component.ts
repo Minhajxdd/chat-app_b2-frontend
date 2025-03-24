@@ -66,7 +66,9 @@ export class ChatBodyComponent {
   subscribeToMessage() {
     const subscription = this._chatSocketService.on('message').subscribe({
       next: (data: { data: ChatMessageModel }) => {
-        this.receivedMessages.push(data.data);
+
+        if(data.data.sender !== this.userId)
+          this.receivedMessages.push(data.data);
 
         this.messageTrigger.emit();
       },
