@@ -22,7 +22,7 @@ export class UserUnauthorizedAuthGuard implements CanActivate {
 
         if (!isAuthenticated) {
             try {
-                await this.authService.refreshAccessToken().toPromise();
+                // await this.authService.refreshAccessToken().toPromise();
 
                 isAuthenticated = this.authService.isUser();
 

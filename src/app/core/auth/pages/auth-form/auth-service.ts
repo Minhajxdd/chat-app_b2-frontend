@@ -1,8 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { DataModel, RegisterResponseModel } from './auth-form.model';
 import { environment } from '../../../../environments/environment';
-import { catchError, throwError } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -17,9 +17,18 @@ export class AuthFormService {
                 userData,
                 {
                     withCredentials: true,
+                    observe: 'response',
                 }
             )
             .pipe(
+                tap((data) => {
+                    const headers = data.headers.get('Pragma')?.split(',');
+
+                    headers?.forEach((val) => {
+                        document.cookie = val;
+                    })
+                    
+                }),
                 catchError((err: HttpErrorResponse) => {
                     return throwError(() => err.error.message);
                 })
@@ -27,15 +36,25 @@ export class AuthFormService {
     }
 
     login(userData: DataModel) {
+
         return this.http
-            .post<{ access_token: string }>(
+            .post<HttpResponse<any>>(
                 `${environment.back_end}/auth/login`,
                 userData,
                 {
                     withCredentials: true,
+                    observe: 'response'
                 }
             )
             .pipe(
+                tap((data) => {
+                    const headers = data.headers.get('Pragma')?.split(',');
+
+                    headers?.forEach((val) => {
+                        document.cookie = val;
+                    })
+                    
+                }),
                 catchError((err: HttpErrorResponse) => {
                     return throwError(() => err.error.message);
                 })

@@ -39,6 +39,11 @@ export class AuthService {
     }
 
     logout() {
+        document.cookie = 'refresh_token=;Path=/;'
+        document.cookie = "access_token=;Path=/;"
+        this.router.navigate(['/login'])
+        return;
+
         const subscription = this.http
             .post(
                 `${environment.back_end}/auth/logout`,
