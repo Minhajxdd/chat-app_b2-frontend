@@ -39,26 +39,24 @@ export class AuthService {
     }
 
     logout() {
-        document.cookie = 'refresh_token=;Path=/;'
-        document.cookie = "access_token=;Path=/;"
-        this.router.navigate(['/login'])
-        return;
+        localStorage.removeItem('access_token');
+        this.router.navigate(['login']);
 
-        const subscription = this.http
-            .post(
-                `${environment.back_end}/auth/logout`,
-                {},
-                { withCredentials: true }
-            )
-            .subscribe({
-                complete: () => {
-                    this.router.navigate(['login']);
-                },
-            });
+        // const subscription = this.http
+        //     .post(
+        //         `${environment.back_end}/auth/logout`,
+        //         {},
+        //         { withCredentials: true }
+        //     )
+        //     .subscribe({
+        //         complete: () => {
+        //             this.router.navigate(['login']);
+        //         },
+        //     });
 
-        this.destroyRef.onDestroy(() => {
-            subscription.unsubscribe();
-        });
+        // this.destroyRef.onDestroy(() => {
+        //     subscription.unsubscribe();
+        // });
     }
 
     private getDecodedAccessToken(token: string) {
@@ -86,9 +84,10 @@ export class AuthService {
     }
 
     isUser(): boolean {
-        const accessToken = this.getCookie('access_token');
-        if (accessToken) {
-            return !this.getDecodedAccessToken(accessToken)?.isAdmin;
+        const token = localStorage.getItem("access_token");
+
+        if (token) {
+            return !this.getDecodedAccessToken(token)?.isAdmin;
         }
         return false;
     }

@@ -26,6 +26,7 @@ export class UserUnauthorizedAuthGuard implements CanActivate {
 
                 isAuthenticated = this.authService.isUser();
 
+                
                 if (!isAuthenticated) {
                     return true;
                 }

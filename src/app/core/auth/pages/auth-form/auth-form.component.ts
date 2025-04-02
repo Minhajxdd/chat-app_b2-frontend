@@ -84,6 +84,10 @@ export class AuthFormComponent {
     };
 
     const subscription = this.authService.register(data).subscribe({
+      next: (data) => {
+        const token = data.accessToken 
+        localStorage.setItem('access_token', token);
+      },
       error: (err: string) => {
         return this.errMsg.set(err);
       },
@@ -111,6 +115,10 @@ export class AuthFormComponent {
     };
 
     const subscription = this.authService.login(data).subscribe({
+      next: (data) => {
+        const token = data.accessToken 
+        localStorage.setItem('access_token', token);
+      },
       error: (err: string) => {
         return this.errMsg.set(err);
       },
